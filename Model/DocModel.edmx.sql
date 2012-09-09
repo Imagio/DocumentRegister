@@ -5,14 +5,11 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 09/07/2012 14:12:52
--- Generated from EDMX file: D:\imagio-sources\DocumentRegister\Model\DocModel.edmx
+-- Date Created: 09/09/2012 12:52:49
+-- Generated from EDMX file: F:\Source\DocumentRegister\Model\DocModel.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
 
-DROP DATABASE IF EXISTS `docs`;
-CREATE DATABASE `docs`;
-USE `docs`;
 
 -- --------------------------------------------------
 -- Dropping existing FOREIGN KEY constraints
@@ -64,7 +61,7 @@ CREATE TABLE `Documents` (
 CREATE TABLE `Files` (
     `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
     `Name` longtext  NOT NULL,
-    `Data` longblob  NOT NULL,
+    `Data` varbinary(100)  NOT NULL,
     `Document_Id` int  NULL
 );
 
@@ -115,7 +112,8 @@ CREATE TABLE `Accounts` (
     `UserName` longtext  NOT NULL,
     `Password` longtext  NOT NULL,
     `IsActive` bool  NOT NULL,
-    `LastAccessTime` datetime  NULL
+    `LastAccessTime` datetime  NULL,
+    `Privileges_CanUseFullClient` bool  NOT NULL
 );
 
 -- Creating table 'DepartmentDepartmentGroup'

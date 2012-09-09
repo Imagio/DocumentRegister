@@ -69,7 +69,7 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="longtext" Nullable="false" />
-    <Property Name="Data" Type="longblob" Nullable="false" />
+    <Property Name="Data" Type="varbinary" Nullable="false" />
     <Property Name="Document_Id" Type="int" Nullable="true" />
   </EntityType>
   <EntityType Name="Monitorings">
@@ -121,6 +121,7 @@
     <Property Name="Password" Type="longtext" Nullable="false" DefaultValue="" />
     <Property Name="IsActive" Type="bool" Nullable="false" DefaultValue="false" />
     <Property Name="LastAccessTime" Type="datetime" Nullable="true" />
+    <Property Name="Privileges_CanUseFullClient" Type="bool" Nullable="false" />
   </EntityType>
   <EntityType Name="DepartmentDepartmentGroup">
     <Key>
@@ -361,6 +362,7 @@
           <NavigationProperty Name="Employees" Relationship="Docs.Model.ExexcutorAccount" FromRole="Account" ToRole="Exexcutor" />
           <Property Type="Boolean" Name="IsActive" Nullable="false" DefaultValue="False" />
           <Property Type="DateTime" Name="LastAccessTime" />
+          <Property Name="Privileges" Type="Docs.Model.AccountPrivileges" Nullable="false" />
         </EntityType>
         <Association Name="DocumentFile">
           <End Type="Docs.Model.Document" Role="Document" Multiplicity="0..1" />
@@ -390,6 +392,9 @@
           <End Type="Docs.Model.Employee" Role="Exexcutor" Multiplicity="*" />
           <End Type="Docs.Model.Account" Role="Account" Multiplicity="0..1" />
         </Association>
+        <ComplexType Name="AccountPrivileges" >
+          <Property Type="Boolean" Name="CanUseFullClient" Nullable="false" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -465,6 +470,9 @@
           <ScalarProperty Name="Password" ColumnName="Password" />
           <ScalarProperty Name="IsActive" ColumnName="IsActive" />
           <ScalarProperty Name="LastAccessTime" ColumnName="LastAccessTime" />
+          <ComplexProperty Name="Privileges" TypeName="Docs.Model.AccountPrivileges">
+            <ScalarProperty Name="CanUseFullClient" ColumnName="Privileges_CanUseFullClient" />
+          </ComplexProperty>
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -553,7 +561,7 @@
         <EntityTypeShape EntityType="Docs.Model.Department" Width="1.5" PointX="0.5" PointY="2.375" Height="0.4" IsExpanded="false" />
         <EntityTypeShape EntityType="Docs.Model.DepartmentGroup" Width="1.5" PointX="0.5" PointY="1.5" Height="0.4" IsExpanded="false" />
         <EntityTypeShape EntityType="Docs.Model.Employee" Width="1.5" PointX="0.5" PointY="3.25" Height="0.4" IsExpanded="false" />
-        <EntityTypeShape EntityType="Docs.Model.Account" Width="1.5" PointX="2.625" PointY="3.25" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="Docs.Model.Account" Width="1.5" PointX="2.625" PointY="3.25" Height="2.3648893229166665" IsExpanded="true" />
         <AssociationConnector Association="Docs.Model.DocumentFile">
           <ConnectorPoint PointX="4.5" PointY="0.7" />
           <ConnectorPoint PointX="2" PointY="0.7" />
