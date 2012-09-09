@@ -61,7 +61,7 @@ namespace Docs.ViewModel
                                 .If(account => account.IsActive)
                                 .With(account => account.Password)
                                 .If(pwd => pwd == PasswordHasher.Calc(Password))
-                                .ReturnSuccess())
+                                .ReturnSuccess() || context.Accounts.Count() == 0)
                         {
                             if (LoginComplete != null)
                                 LoginComplete(this, selectedAccount, context);

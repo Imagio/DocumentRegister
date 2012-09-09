@@ -13,6 +13,9 @@ namespace Docs.ViewModel
         public delegate bool NewWindowEventHandler(object sender, string title, object e);
         public event NewWindowEventHandler NewWindow;
 
+        public delegate bool QuestionBoxEventHandler(object sender, string title, string message);
+        public event QuestionBoxEventHandler OnQuestion;
+
         public DocContainer Context { get; private set; }
         public Account Account { get; private set; }
 
@@ -51,6 +54,13 @@ namespace Docs.ViewModel
         {
             if (NewWindow != null)
                return NewWindow(this, title, vm);
+            return false;
+        }
+
+        public bool AskQuestion(string title, string message)
+        {
+            if (OnQuestion != null)
+                return OnQuestion(this, title, message);
             return false;
         }
 

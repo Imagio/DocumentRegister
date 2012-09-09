@@ -45,7 +45,13 @@ namespace Docs.DesktopApp
             MainViewModel main = new MainViewModel(account, context);
             shell.DataContext = main;
             main.NewWindow += new MainViewModel.NewWindowEventHandler(main_NewWindow);
+            main.OnQuestion += new MainViewModel.QuestionBoxEventHandler(main_OnQuestion);
             shell.Show();
+        }
+
+        bool main_OnQuestion(object sender, string title, string message)
+        {
+            return MessageBox.Show(message, title, MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No) == MessageBoxResult.Yes ? true : false;
         }
 
         bool main_NewWindow(object sender, string title, object e)

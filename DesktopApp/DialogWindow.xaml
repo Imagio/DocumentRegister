@@ -9,6 +9,7 @@
         xmlns:vmsearcher="clr-namespace:Docs.ViewModel.Searcher;assembly=ViewModel"
         xmlns:vsearcher="clr-namespace:Docs.View.Searcher;assembly=View"
         SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen"
+        Width="480" Height="320"
         Background="{StaticResource ResourceKey=ContentBackgroundBrush}">
     
     <Window.Resources>

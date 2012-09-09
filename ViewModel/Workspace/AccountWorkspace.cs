@@ -116,6 +116,8 @@ namespace Docs.ViewModel
             {
                 return new RelayCommand(o =>
                     {
+                        if (!HandlerStore.Main.AskQuestion("Удаление учетной записи", "Вы действительно хотите удалить учетную запись?"))
+                            return;
                         var account = SelectedAccount;
                         HandlerStore.Main.Context.Accounts.DeleteObject(account);
                         HandlerStore.Main.Context.SaveChanges();

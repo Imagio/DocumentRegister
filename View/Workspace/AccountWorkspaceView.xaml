@@ -15,7 +15,7 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <ToolBar>
-            <ctrl:CreateNew ToolTip="Создать пользователя" />
+            <ctrl:CreateNew ToolTip="Создать нового пользователя" />
             <Separator />
             <ctrl:CreateCopy ToolTip="Создать пользователя копированием текущего" />
             <ctrl:Edit ToolTip="Редактировать пользователя" />
@@ -26,7 +26,7 @@
             <ctrl:ClearFind ToolTip="Отменить поиск" />
         </ToolBar>
         <DataGrid Grid.Row="1" ItemsSource="{Binding Path=AccountCollection}"
-                  SelectedItem="{Binding Path=SelectedAccount}">
+                  SelectedItem="{Binding Path=SelectedAccount}" MouseDoubleClick="DataGrid_MouseDoubleClick">
             <DataGrid.Columns>
                 <DataGridTemplateColumn Header="Имя пользователя"
                                         SortMemberPath="Name"

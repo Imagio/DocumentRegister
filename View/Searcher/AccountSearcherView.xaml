@@ -2,9 +2,9 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006">
-    <StackPanel Orientation="Horizontal">
+    <StackPanel Orientation="Horizontal" VerticalAlignment="Top" >
         <Label Content="Имя пользователя" />
-        <TextBox Text="{Binding Path=UserName}"
+        <TextBox Text="{Binding Path=UserName}" Width="300"
                  VerticalAlignment="Center"/>
     </StackPanel>
 </UserControl>

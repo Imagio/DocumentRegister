@@ -23,5 +23,18 @@ namespace Docs.View
         {
             InitializeComponent();
         }
+
+        private void DataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+                ICommand editCommand = DataContext.GetType().GetProperty("EditCommand").GetValue(DataContext, null) as ICommand;
+                if (editCommand.CanExecute(null))
+                    editCommand.Execute(null);
+            }
+            catch
+            {
+            }
+        }
     }
 }

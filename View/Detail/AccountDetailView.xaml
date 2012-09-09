@@ -3,54 +3,60 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:ctrl="clr-namespace:Docs.View.ControlPanel">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="100" />
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="300" />
-        </Grid.ColumnDefinitions>
-        <Label Grid.Column="0" Grid.Row="0"
+
+    <TabControl>
+        <TabItem Header="Главная">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition MinHeight="100" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="300" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Grid.Row="0"
                Content="Имя пользователя:" />
-        <Label Grid.Column="0" Grid.Row="1"
+                <Label Grid.Column="0" Grid.Row="1"
                Content="Пароль:" />
-        <CheckBox Grid.Column="2" Grid.Row="2"
+                <CheckBox Grid.Column="1" Grid.Row="2"
                   Content="Используется" IsChecked="{Binding Path=IsActive}"/>
-        <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding Path=UserName}"
+                <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding Path=UserName}"
                  VerticalAlignment="Center"/>
-        <PasswordBox Grid.Column="1" Grid.Row="1" PasswordChanged="PasswordChanged"
+                <PasswordBox Grid.Column="1" Grid.Row="1" PasswordChanged="PasswordChanged"
                      VerticalAlignment="Center"/>
-        <Label Grid.Column="0" Grid.Row="3"
+                <Label Grid.Column="0" Grid.Row="3"
                Content="Ответственные:" />
-        <Grid Grid.ColumnSpan="2" Grid.Row="4">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-            <ToolBar>
-                <ctrl:Add />
-                <Separator />
-                <ctrl:Delete />
-            </ToolBar>
-            <DataGrid Grid.Row="1" ColumnWidth="*" ItemsSource="{Binding Path=Employees}">
-                <DataGrid.Columns>
-                    <DataGridTemplateColumn>
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <StackPanel Orientation="Horizontal">
-                                    <Image Source="/View;component/Images/bullet_blue.png" />
-                                    <TextBlock Text="{Binding Path=Text}" VerticalAlignment="Center" />
-                                </StackPanel>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                </DataGrid.Columns>
-            </DataGrid>
-        </Grid>               
-    </Grid>
+                <Grid Grid.ColumnSpan="3" Grid.Row="4">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <ToolBar>
+                        <ctrl:Add />
+                        <Separator />
+                        <ctrl:Delete />
+                    </ToolBar>
+                    <DataGrid Grid.Row="1" ItemsSource="{Binding Path=Employees}">
+                        <DataGrid.Columns>
+                            <DataGridTemplateColumn>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Image Source="/View;component/Images/bullet_blue.png" />
+                                            <TextBlock Text="{Binding Path=Text}" VerticalAlignment="Center" />
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </Grid>
+        </TabItem>
+    </TabControl>
 </UserControl>

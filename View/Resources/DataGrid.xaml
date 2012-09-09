@@ -87,6 +87,7 @@
         <Setter Property="Foreground" Value="#FF141414" />
         <Setter Property="FontWeight" Value="Normal" />
         <Setter Property="Padding" Value="1" />
+        <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderThickness" Value="0" />
         <Style.Triggers>
             <Trigger Property="IsSelected" Value="True">
