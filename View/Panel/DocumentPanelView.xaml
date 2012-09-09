@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="Docs.View.DocumentPanelView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006">
+    
+    <StackPanel Orientation="Horizontal">
+        <HeaderedContentControl Style="{StaticResource ResourceKey=PanelStyle}" Header="Создать">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel>
+                    <Button Content="Приказ" Style="{StaticResource ResourceKey=ControlButtonStyle}" />
+                    <Button Content="Входящий документ" Style="{StaticResource ResourceKey=ControlButtonStyle}" />
+                    <Button Content="Исходящий документ" Style="{StaticResource ResourceKey=ControlButtonStyle}" />
+                </StackPanel>
+                <Rectangle Fill="{StaticResource ResourceKey=SeparatorBrush}" Width="1" />
+                <StackPanel>
+                    <Button Content="Договор" Style="{StaticResource ResourceKey=ControlButtonStyle}" />
+                    <Button Content="Акт" Style="{StaticResource ResourceKey=ControlButtonStyle}" />
+                    <Button Content="Командировка" Style="{StaticResource ResourceKey=ControlButtonStyle}" />
+                </StackPanel>
+            </StackPanel>
+        </HeaderedContentControl>
+        <HeaderedContentControl Style="{StaticResource ResourceKey=PanelStyle}" Header="Отчеты">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel>
+                    <Button Content="Список документов" Style="{StaticResource ResourceKey=ControlButtonStyle}" />
+                </StackPanel>
+            </StackPanel>
+        </HeaderedContentControl>
+    </StackPanel>
+    
+</UserControl>

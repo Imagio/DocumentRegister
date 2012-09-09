@@ -1,0 +1,10 @@
+﻿<UserControl x:Class="Docs.View.ControlPanel.CreateCopy"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" >
+    
+    <Button Command="{Binding Path=CreateCopyCommand}">
+        <Image Source="/View;component/Images/create_copy.png" />
+    </Button>
+    
+</UserControl>

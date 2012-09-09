@@ -1,0 +1,588 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Docs.Model.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.0" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="DocsModelStoreContainer">
+    <EntitySet Name="Documents" EntityType="Docs.Model.Store.Documents" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Files" EntityType="Docs.Model.Store.Files" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Monitorings" EntityType="Docs.Model.Store.Monitorings" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MonitoringInfoes" EntityType="Docs.Model.Store.MonitoringInfoes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Departments" EntityType="Docs.Model.Store.Departments" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DepartmentGroups" EntityType="Docs.Model.Store.DepartmentGroups" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Employees" EntityType="Docs.Model.Store.Employees" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Accounts" EntityType="Docs.Model.Store.Accounts" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DepartmentDepartmentGroup" EntityType="Docs.Model.Store.DepartmentDepartmentGroup" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DocumentDepartment" EntityType="Docs.Model.Store.DocumentDepartment" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="DocumentFile" Association="Docs.Model.Store.DocumentFile">
+      <End Role="Document" EntitySet="Documents" />
+      <End Role="File" EntitySet="Files" />
+    </AssociationSet>
+    <AssociationSet Name="MonitoringMonitoringInfo" Association="Docs.Model.Store.MonitoringMonitoringInfo">
+      <End Role="Monitoring" EntitySet="Monitorings" />
+      <End Role="MonitoringInfo" EntitySet="MonitoringInfoes" />
+    </AssociationSet>
+    <AssociationSet Name="DocumentMonitoringInfo" Association="Docs.Model.Store.DocumentMonitoringInfo">
+      <End Role="Document" EntitySet="Documents" />
+      <End Role="MonitoringInfo" EntitySet="MonitoringInfoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DepartmentDepartmentGroup_Department" Association="Docs.Model.Store.FK_DepartmentDepartmentGroup_Department">
+      <End Role="Department" EntitySet="Departments" />
+      <End Role="DepartmentDepartmentGroup" EntitySet="DepartmentDepartmentGroup" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DepartmentDepartmentGroup_DepartmentGroup" Association="Docs.Model.Store.FK_DepartmentDepartmentGroup_DepartmentGroup">
+      <End Role="DepartmentGroup" EntitySet="DepartmentGroups" />
+      <End Role="DepartmentDepartmentGroup" EntitySet="DepartmentDepartmentGroup" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DocumentDepartment_Document" Association="Docs.Model.Store.FK_DocumentDepartment_Document">
+      <End Role="Document" EntitySet="Documents" />
+      <End Role="DocumentDepartment" EntitySet="DocumentDepartment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DocumentDepartment_Department" Association="Docs.Model.Store.FK_DocumentDepartment_Department">
+      <End Role="Department" EntitySet="Departments" />
+      <End Role="DocumentDepartment" EntitySet="DocumentDepartment" />
+    </AssociationSet>
+    <AssociationSet Name="DepartmentExexcutor" Association="Docs.Model.Store.DepartmentExexcutor">
+      <End Role="Department" EntitySet="Departments" />
+      <End Role="Exexcutor" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="ExexcutorAccount" Association="Docs.Model.Store.ExexcutorAccount">
+      <End Role="Exexcutor" EntitySet="Employees" />
+      <End Role="Account" EntitySet="Accounts" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Documents">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Num" Type="longtext" Nullable="true" />
+    <Property Name="RegistrationDate" Type="datetime" Nullable="true" />
+    <Property Name="Name" Type="longtext" Nullable="true" />
+    <Property Name="Note" Type="longtext" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Files">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="longtext" Nullable="false" />
+    <Property Name="Data" Type="longblob" Nullable="false" />
+    <Property Name="Document_Id" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Monitorings">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="longtext" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MonitoringInfoes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="Monitoring_Id" Type="int" Nullable="false" />
+    <Property Name="DocumentMonitoringInfo_MonitoringInfo_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Departments">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Code" Type="longtext" Nullable="false" />
+    <Property Name="Name" Type="longtext" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DepartmentGroups">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="longtext" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Employees">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="longtext" Nullable="false" />
+    <Property Name="Department_Id" Type="int" Nullable="false" />
+    <Property Name="Account_Id" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Accounts">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="longtext" Nullable="false" DefaultValue="" />
+    <Property Name="Password" Type="longtext" Nullable="false" DefaultValue="" />
+    <Property Name="IsActive" Type="bool" Nullable="false" DefaultValue="false" />
+    <Property Name="LastAccessTime" Type="datetime" Nullable="true" />
+  </EntityType>
+  <EntityType Name="DepartmentDepartmentGroup">
+    <Key>
+      <PropertyRef Name="Departments_Id" />
+      <PropertyRef Name="DepartmentDepartmentGroup_Department_Id" />
+    </Key>
+    <Property Name="Departments_Id" Type="int" Nullable="false" />
+    <Property Name="DepartmentDepartmentGroup_Department_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DocumentDepartment">
+    <Key>
+      <PropertyRef Name="DocumentDepartment_Department_Id" />
+      <PropertyRef Name="SendDepartments_Id" />
+    </Key>
+    <Property Name="DocumentDepartment_Department_Id" Type="int" Nullable="false" />
+    <Property Name="SendDepartments_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="DocumentFile">
+    <End Role="Document" Type="Docs.Model.Store.Documents" Multiplicity="0..1" />
+    <End Role="File" Type="Docs.Model.Store.Files" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Document">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="File">
+        <PropertyRef Name="Document_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MonitoringMonitoringInfo">
+    <End Role="Monitoring" Type="Docs.Model.Store.Monitorings" Multiplicity="1" />
+    <End Role="MonitoringInfo" Type="Docs.Model.Store.MonitoringInfoes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Monitoring">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MonitoringInfo">
+        <PropertyRef Name="Monitoring_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DocumentMonitoringInfo">
+    <End Role="Document" Type="Docs.Model.Store.Documents" Multiplicity="1" />
+    <End Role="MonitoringInfo" Type="Docs.Model.Store.MonitoringInfoes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Document">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MonitoringInfo">
+        <PropertyRef Name="DocumentMonitoringInfo_MonitoringInfo_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DepartmentExexcutor">
+    <End Role="Department" Type="Docs.Model.Store.Departments" Multiplicity="1" />
+    <End Role="Exexcutor" Type="Docs.Model.Store.Employees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Department">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Exexcutor">
+        <PropertyRef Name="Department_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ExexcutorAccount">
+    <End Role="Exexcutor" Type="Docs.Model.Store.Employees" Multiplicity="*" />
+    <End Role="Account" Type="Docs.Model.Store.Accounts" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Exexcutor">
+        <PropertyRef Name="Account_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DepartmentDepartmentGroup_Department">
+    <End Role="Department" Type="Docs.Model.Store.Departments" Multiplicity="1" />
+    <End Role="DepartmentDepartmentGroup" Type="Docs.Model.Store.DepartmentDepartmentGroup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Department">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DepartmentDepartmentGroup">
+        <PropertyRef Name="Departments_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DepartmentDepartmentGroup_DepartmentGroup">
+    <End Role="DepartmentDepartmentGroup" Type="Docs.Model.Store.DepartmentDepartmentGroup" Multiplicity="*" />
+    <End Role="DepartmentGroup" Type="Docs.Model.Store.DepartmentGroups" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="DepartmentGroup">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DepartmentDepartmentGroup">
+        <PropertyRef Name="DepartmentDepartmentGroup_Department_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DocumentDepartment_Document">
+    <End Role="Document" Type="Docs.Model.Store.Documents" Multiplicity="1" />
+    <End Role="DocumentDepartment" Type="Docs.Model.Store.DocumentDepartment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Document">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DocumentDepartment">
+        <PropertyRef Name="DocumentDepartment_Department_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DocumentDepartment_Department">
+    <End Role="DocumentDepartment" Type="Docs.Model.Store.DocumentDepartment" Multiplicity="*" />
+    <End Role="Department" Type="Docs.Model.Store.Departments" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Department">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DocumentDepartment">
+        <PropertyRef Name="SendDepartments_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Docs.Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+        <EntityContainer Name="DocContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Documents" EntityType="Docs.Model.Document" />
+          <EntitySet Name="Files" EntityType="Docs.Model.File" />
+          <EntitySet Name="Monitorings" EntityType="Docs.Model.Monitoring" />
+          <EntitySet Name="MonitoringInfoes" EntityType="Docs.Model.MonitoringInfo" />
+          <EntitySet Name="Departments" EntityType="Docs.Model.Department" />
+          <EntitySet Name="DepartmentGroups" EntityType="Docs.Model.DepartmentGroup" />
+          <EntitySet Name="Employees" EntityType="Docs.Model.Employee" />
+          <EntitySet Name="Accounts" EntityType="Docs.Model.Account" />
+          <AssociationSet Name="DocumentFile" Association="Docs.Model.DocumentFile">
+            <End Role="Document" EntitySet="Documents" />
+            <End Role="File" EntitySet="Files" />
+          </AssociationSet>
+          <AssociationSet Name="MonitoringMonitoringInfo" Association="Docs.Model.MonitoringMonitoringInfo">
+            <End Role="Monitoring" EntitySet="Monitorings" />
+            <End Role="MonitoringInfo" EntitySet="MonitoringInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="DocumentMonitoringInfo" Association="Docs.Model.DocumentMonitoringInfo">
+            <End Role="Document" EntitySet="Documents" />
+            <End Role="MonitoringInfo" EntitySet="MonitoringInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="DepartmentDepartmentGroup" Association="Docs.Model.DepartmentDepartmentGroup">
+            <End Role="Department" EntitySet="Departments" />
+            <End Role="DepartmentGroup" EntitySet="DepartmentGroups" />
+          </AssociationSet>
+          <AssociationSet Name="DocumentDepartment" Association="Docs.Model.DocumentDepartment">
+            <End Role="Document" EntitySet="Documents" />
+            <End Role="Department" EntitySet="Departments" />
+          </AssociationSet>
+          <AssociationSet Name="DepartmentExexcutor" Association="Docs.Model.DepartmentExexcutor">
+            <End Role="Department" EntitySet="Departments" />
+            <End Role="Exexcutor" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="ExexcutorAccount" Association="Docs.Model.ExexcutorAccount">
+            <End Role="Exexcutor" EntitySet="Employees" />
+            <End Role="Account" EntitySet="Accounts" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Document">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Num" />
+          <Property Type="DateTime" Name="RegistrationDate" />
+          <Property Type="String" Name="Name" />
+          <Property Type="String" Name="Note" />
+          <NavigationProperty Name="Files" Relationship="Docs.Model.DocumentFile" FromRole="Document" ToRole="File" />
+          <NavigationProperty Name="MonitoringInfoes" Relationship="Docs.Model.DocumentMonitoringInfo" FromRole="Document" ToRole="MonitoringInfo" />
+          <NavigationProperty Name="SendDepartments" Relationship="Docs.Model.DocumentDepartment" FromRole="Document" ToRole="Department" />
+        </EntityType>
+        <EntityType Name="File">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" />
+          <Property Type="Binary" Name="Data" Nullable="false" />
+          <NavigationProperty Name="Document" Relationship="Docs.Model.DocumentFile" FromRole="File" ToRole="Document" />
+        </EntityType>
+        <EntityType Name="Monitoring">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MonitoringInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="Date" Nullable="false" />
+          <NavigationProperty Name="Monitoring" Relationship="Docs.Model.MonitoringMonitoringInfo" FromRole="MonitoringInfo" ToRole="Monitoring" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Code" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" />
+          <NavigationProperty Name="Employees" Relationship="Docs.Model.DepartmentExexcutor" FromRole="Department" ToRole="Exexcutor" />
+        </EntityType>
+        <EntityType Name="DepartmentGroup">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" />
+          <NavigationProperty Name="Departments" Relationship="Docs.Model.DepartmentDepartmentGroup" FromRole="DepartmentGroup" ToRole="Department" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" />
+          <NavigationProperty Name="Department" Relationship="Docs.Model.DepartmentExexcutor" FromRole="Exexcutor" ToRole="Department" />
+          <NavigationProperty Name="Account" Relationship="Docs.Model.ExexcutorAccount" FromRole="Exexcutor" ToRole="Account" />
+        </EntityType>
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="UserName" Nullable="false" DefaultValue="" />
+          <Property Type="String" Name="Password" Nullable="false" DefaultValue="" />
+          <NavigationProperty Name="Employees" Relationship="Docs.Model.ExexcutorAccount" FromRole="Account" ToRole="Exexcutor" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" DefaultValue="False" />
+          <Property Type="DateTime" Name="LastAccessTime" />
+        </EntityType>
+        <Association Name="DocumentFile">
+          <End Type="Docs.Model.Document" Role="Document" Multiplicity="0..1" />
+          <End Type="Docs.Model.File" Role="File" Multiplicity="*" />
+        </Association>
+        <Association Name="MonitoringMonitoringInfo">
+          <End Type="Docs.Model.Monitoring" Role="Monitoring" Multiplicity="1" />
+          <End Type="Docs.Model.MonitoringInfo" Role="MonitoringInfo" Multiplicity="*" />
+        </Association>
+        <Association Name="DocumentMonitoringInfo">
+          <End Type="Docs.Model.Document" Role="Document" Multiplicity="1" />
+          <End Type="Docs.Model.MonitoringInfo" Role="MonitoringInfo" Multiplicity="*" />
+        </Association>
+        <Association Name="DepartmentDepartmentGroup">
+          <End Type="Docs.Model.Department" Role="Department" Multiplicity="*" />
+          <End Type="Docs.Model.DepartmentGroup" Role="DepartmentGroup" Multiplicity="*" />
+        </Association>
+        <Association Name="DocumentDepartment">
+          <End Type="Docs.Model.Document" Role="Document" Multiplicity="*" />
+          <End Type="Docs.Model.Department" Role="Department" Multiplicity="*" />
+        </Association>
+        <Association Name="DepartmentExexcutor">
+          <End Type="Docs.Model.Department" Role="Department" Multiplicity="1" />
+          <End Type="Docs.Model.Employee" Role="Exexcutor" Multiplicity="*" />
+        </Association>
+        <Association Name="ExexcutorAccount">
+          <End Type="Docs.Model.Employee" Role="Exexcutor" Multiplicity="*" />
+          <End Type="Docs.Model.Account" Role="Account" Multiplicity="0..1" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DocsModelStoreContainer" CdmEntityContainer="DocContainer">
+    <EntitySetMapping Name="Documents">
+      <EntityTypeMapping TypeName="IsTypeOf(Docs.Model.Document)">
+        <MappingFragment StoreEntitySet="Documents">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Num" ColumnName="Num" />
+          <ScalarProperty Name="RegistrationDate" ColumnName="RegistrationDate" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Files">
+      <EntityTypeMapping TypeName="IsTypeOf(Docs.Model.File)">
+        <MappingFragment StoreEntitySet="Files">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Data" ColumnName="Data" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Monitorings">
+      <EntityTypeMapping TypeName="IsTypeOf(Docs.Model.Monitoring)">
+        <MappingFragment StoreEntitySet="Monitorings">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MonitoringInfoes">
+      <EntityTypeMapping TypeName="IsTypeOf(Docs.Model.MonitoringInfo)">
+        <MappingFragment StoreEntitySet="MonitoringInfoes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Departments">
+      <EntityTypeMapping TypeName="IsTypeOf(Docs.Model.Department)">
+        <MappingFragment StoreEntitySet="Departments">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DepartmentGroups">
+      <EntityTypeMapping TypeName="IsTypeOf(Docs.Model.DepartmentGroup)">
+        <MappingFragment StoreEntitySet="DepartmentGroups">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="IsTypeOf(Docs.Model.Employee)">
+        <MappingFragment StoreEntitySet="Employees">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Accounts">
+      <EntityTypeMapping TypeName="IsTypeOf(Docs.Model.Account)">
+        <MappingFragment StoreEntitySet="Accounts">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="LastAccessTime" ColumnName="LastAccessTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="DocumentFile" TypeName="Docs.Model.DocumentFile" StoreEntitySet="Files">
+      <EndProperty Name="Document">
+        <ScalarProperty Name="Id" ColumnName="Document_Id" />
+      </EndProperty>
+      <EndProperty Name="File">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="Document_Id" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="MonitoringMonitoringInfo" TypeName="Docs.Model.MonitoringMonitoringInfo" StoreEntitySet="MonitoringInfoes">
+      <EndProperty Name="Monitoring">
+        <ScalarProperty Name="Id" ColumnName="Monitoring_Id" />
+      </EndProperty>
+      <EndProperty Name="MonitoringInfo">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="DocumentMonitoringInfo" TypeName="Docs.Model.DocumentMonitoringInfo" StoreEntitySet="MonitoringInfoes">
+      <EndProperty Name="Document">
+        <ScalarProperty Name="Id" ColumnName="DocumentMonitoringInfo_MonitoringInfo_Id" />
+      </EndProperty>
+      <EndProperty Name="MonitoringInfo">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="DepartmentDepartmentGroup" TypeName="Docs.Model.DepartmentDepartmentGroup" StoreEntitySet="DepartmentDepartmentGroup">
+      <EndProperty Name="Department">
+        <ScalarProperty Name="Id" ColumnName="Departments_Id" />
+      </EndProperty>
+      <EndProperty Name="DepartmentGroup">
+        <ScalarProperty Name="Id" ColumnName="DepartmentDepartmentGroup_Department_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="DocumentDepartment" TypeName="Docs.Model.DocumentDepartment" StoreEntitySet="DocumentDepartment">
+      <EndProperty Name="Document">
+        <ScalarProperty Name="Id" ColumnName="DocumentDepartment_Department_Id" />
+      </EndProperty>
+      <EndProperty Name="Department">
+        <ScalarProperty Name="Id" ColumnName="SendDepartments_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="DepartmentExexcutor" TypeName="Docs.Model.DepartmentExexcutor" StoreEntitySet="Employees">
+      <EndProperty Name="Department">
+        <ScalarProperty Name="Id" ColumnName="Department_Id" />
+      </EndProperty>
+      <EndProperty Name="Exexcutor">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ExexcutorAccount" TypeName="Docs.Model.ExexcutorAccount" StoreEntitySet="Employees">
+      <EndProperty Name="Account">
+        <ScalarProperty Name="Id" ColumnName="Account_Id" />
+      </EndProperty>
+      <EndProperty Name="Exexcutor">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="Account_Id" IsNull="false" />
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="DDLGenerationTemplate" Value="$(VSEFTools)\DBGen\SSDLToMySQL.tt" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram Name="DocModel" >
+        <EntityTypeShape EntityType="Docs.Model.Document" Width="1.5" PointX="4.5" PointY="0.5" Height="2.3648893229166661" />
+        <EntityTypeShape EntityType="Docs.Model.File" Width="1.5" PointX="0.5" PointY="0.5" Height="0.4" IsExpanded="false" />
+        <EntityTypeShape EntityType="Docs.Model.Monitoring" Width="1.5" PointX="0.5" PointY="1" Height="0.4" IsExpanded="false" />
+        <EntityTypeShape EntityType="Docs.Model.MonitoringInfo" Width="1.5" PointX="2.5" PointY="1" Height="0.4" IsExpanded="false" />
+        <EntityTypeShape EntityType="Docs.Model.Department" Width="1.5" PointX="0.5" PointY="2.375" Height="0.4" IsExpanded="false" />
+        <EntityTypeShape EntityType="Docs.Model.DepartmentGroup" Width="1.5" PointX="0.5" PointY="1.5" Height="0.4" IsExpanded="false" />
+        <EntityTypeShape EntityType="Docs.Model.Employee" Width="1.5" PointX="0.5" PointY="3.25" Height="0.4" IsExpanded="false" />
+        <EntityTypeShape EntityType="Docs.Model.Account" Width="1.5" PointX="2.625" PointY="3.25" Height="2.1725878906249996" IsExpanded="true" />
+        <AssociationConnector Association="Docs.Model.DocumentFile">
+          <ConnectorPoint PointX="4.5" PointY="0.7" />
+          <ConnectorPoint PointX="2" PointY="0.7" />
+        </AssociationConnector>
+        <AssociationConnector Association="Docs.Model.MonitoringMonitoringInfo">
+          <ConnectorPoint PointX="2" PointY="1.2" />
+          <ConnectorPoint PointX="2.5" PointY="1.2" />
+        </AssociationConnector>
+        <AssociationConnector Association="Docs.Model.DocumentMonitoringInfo">
+          <ConnectorPoint PointX="4.5" PointY="1.2000000000000002" />
+          <ConnectorPoint PointX="4" PointY="1.2000000000000002" />
+        </AssociationConnector>
+        <AssociationConnector Association="Docs.Model.DepartmentDepartmentGroup">
+          <ConnectorPoint PointX="1.25" PointY="2.375" />
+          <ConnectorPoint PointX="1.25" PointY="1.9" />
+        </AssociationConnector>
+        <AssociationConnector Association="Docs.Model.DocumentDepartment">
+          <ConnectorPoint PointX="4.5" PointY="2.575" />
+          <ConnectorPoint PointX="2" PointY="2.575" />
+        </AssociationConnector>
+        <AssociationConnector Association="Docs.Model.DepartmentExexcutor">
+          <ConnectorPoint PointX="1.25" PointY="2.775" />
+          <ConnectorPoint PointX="1.25" PointY="3.25" />
+        </AssociationConnector>
+        <AssociationConnector Association="Docs.Model.ExexcutorAccount">
+          <ConnectorPoint PointX="2" PointY="3.45" />
+          <ConnectorPoint PointX="2.625" PointY="3.45" />
+        </AssociationConnector>
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

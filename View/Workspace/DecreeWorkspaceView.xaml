@@ -1,0 +1,67 @@
+﻿<UserControl x:Class="Docs.View.DecreeWorkspaceView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:v="clr-namespace:Docs.View"
+             xmlns:ext="clr-namespace:Docs.ViewModel.Extended;assembly=ViewModel"
+             xmlns:extv="clr-namespace:Docs.View.Extended"
+             xmlns:lib="clr-namespace:Docs.View.Controls"
+             xmlns:c="clr-namespace:Docs.View.Converters">
+    
+    <UserControl.Resources>        
+        <DataTemplate DataType="{x:Type ext:Period}">
+            <extv:PeriodView />
+        </DataTemplate>
+    </UserControl.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal">
+            <ContentControl Content="{Binding Path=Period}" />
+        </StackPanel>
+        
+        <DataGrid Grid.Row="2" ItemsSource="{Binding Path=Items}">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn ToolTipService.ToolTip="Файлы">
+                    <DataGridTemplateColumn.Header>
+                        <Image Source="/View;component/Images/attach.png" />
+                    </DataGridTemplateColumn.Header>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn ToolTipService.ToolTip="Рассылка">
+                    <DataGridTemplateColumn.Header>
+                        <Image Source="/View;component/Images/send.png" />
+                    </DataGridTemplateColumn.Header>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn ToolTipService.ToolTip="Исполнитель">
+                    <DataGridTemplateColumn.Header>
+                        <Image Source="/View;component/Images/executor.png" />
+                    </DataGridTemplateColumn.Header>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn ToolTipService.ToolTip="Контроль">
+                    <DataGridTemplateColumn.Header>
+                        <Image Source="/View;component/Images/tick.png" />
+                    </DataGridTemplateColumn.Header>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Наименование">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="/View;component/Images/bullet_blue.png" />
+                                <TextBlock Text="{Binding Path=Name}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Номер документа" Binding="{Binding Path=Num}" />
+                <DataGridTextColumn Header="Дата регистрации" Binding="{Binding Path=RegistrationDate}" />
+                <DataGridTextColumn Header="Дата исполнения" Binding="{Binding Path=ExecutionDate}" />
+                <DataGridTextColumn Header="Исполнитель" Binding="{Binding Path=Executor}" />
+                <DataGridTextColumn Header="Рассылка" Binding="{Binding Path=Sending}" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

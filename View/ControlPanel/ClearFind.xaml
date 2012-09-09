@@ -1,0 +1,10 @@
+﻿<UserControl x:Class="Docs.View.ControlPanel.ClearFind"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" >
+    
+    <Button Command="{Binding Path=ClearFindCommand}">
+        <Image Source="/View;component/Images/find_.png" />
+    </Button>
+    
+</UserControl>

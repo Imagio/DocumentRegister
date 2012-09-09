@@ -1,0 +1,40 @@
+﻿<Window x:Class="Docs.DesktopApp.DialogWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:ext="clr-namespace:Docs.ViewModel.Extended;assembly=ViewModel"
+        xmlns:vm="clr-namespace:Docs.ViewModel;assembly=ViewModel"
+        xmlns:v="clr-namespace:Docs.View;assembly=View"
+        xmlns:m="clr-namespace:Docs.Model;assembly=Model"
+        xmlns:extv="clr-namespace:Docs.View.Extended;assembly=View"
+        xmlns:vmsearcher="clr-namespace:Docs.ViewModel.Searcher;assembly=ViewModel"
+        xmlns:vsearcher="clr-namespace:Docs.View.Searcher;assembly=View"
+        SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen"
+        Background="{StaticResource ResourceKey=ContentBackgroundBrush}">
+    
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type ext:PeriodChanger}">
+            <extv:PeriodChangerView />
+        </DataTemplate>
+        
+        <DataTemplate DataType="{x:Type vmsearcher:AccountSearcher}">
+            <vsearcher:AccountSearcherView />
+        </DataTemplate>
+        
+        <DataTemplate DataType="{x:Type m:Account}">
+            <v:AccountDetailView />
+        </DataTemplate>
+    </Window.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <ContentControl Content="{Binding}" Margin="5" />
+        <StackPanel Grid.Row="1" Margin="5"
+                    Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Margin="2" Content="OK" IsDefault="True" Style="{StaticResource ResourceKey=MainButtonStyle}" Click="Button_Click_OK" />
+            <Button Margin="2" VerticalAlignment="Center" IsCancel="True" Content="Отмена" Click="Button_Click_Cancel" />        
+        </StackPanel>
+    </Grid>    
+</Window>

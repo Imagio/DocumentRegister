@@ -1,0 +1,122 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Color x:Key="WindowBackgroundColor">#FFF2EED8</Color>
+    <SolidColorBrush x:Key="WindowBackgroundBrush" Color="{StaticResource ResourceKey=WindowBackgroundColor}" />
+
+    <Color x:Key="WindowBorderColor">#FFA19A76</Color>
+    <SolidColorBrush x:Key="WindowBorderBrush" Color="{StaticResource ResourceKey=WindowBorderColor}" />
+
+    <Color x:Key="ContentBackgroundColor">#FFFCFAEB</Color>
+    <SolidColorBrush x:Key="ContentBackgroundBrush" Color="{StaticResource ResourceKey=ContentBackgroundColor}" />
+
+    <Color x:Key="HeaderBackgroundColor">#FFE4DFC3</Color>
+    <SolidColorBrush x:Key="HeaderBackgroundBrush" Color="{StaticResource ResourceKey=HeaderBackgroundColor}" />
+
+    <Color x:Key="HeaderForegroundColor">#FF635D40</Color>
+    <SolidColorBrush x:Key="HeaderForegroundBrush" Color="{StaticResource ResourceKey=HeaderForegroundColor}" />
+
+    <Color x:Key="ButtonForegroundColor">#FF3D2D02</Color>
+    <SolidColorBrush x:Key="ButtonForegroundBrush" Color="{StaticResource ResourceKey=ButtonForegroundColor}" />
+
+    <Color x:Key="ButtonMouseOverBorderColor">#FF9EB6E9</Color>
+    <SolidColorBrush x:Key="ButtonMouseOverBorderBrush" Color="{StaticResource ResourceKey=ButtonMouseOverBorderColor}" />    
+    <LinearGradientBrush x:Key="ButtonMouseOverBackgroundBrush" StartPoint="0 0" EndPoint="0 1">
+        <GradientStop Offset="0" Color="#FFFFFFFF" />
+        <GradientStop Offset="0.5" Color="#FFD9EAFF" />
+        <GradientStop Offset="1" Color="#FFCCE3FF" />
+    </LinearGradientBrush>
+    <SolidColorBrush x:Key="ButtonMouseOverForegroundBrush" Color="#FF1834A1" />
+
+    <Color x:Key="ButtonPressedBorderColor">#FF9EB6E9</Color>
+    <SolidColorBrush x:Key="ButtonPressedBorderBrush" Color="{StaticResource ResourceKey=ButtonPressedBorderColor}" />
+    <LinearGradientBrush x:Key="ButtonPressedBackgroundBrush" StartPoint="0 0" EndPoint="0 1">
+        <GradientStop Offset="0" Color="#FFBED7FA" />
+        <GradientStop Offset="0.5" Color="#FFADC9FF" />
+        <GradientStop Offset="1" Color="#FF8FAFFF" />
+    </LinearGradientBrush>
+    <SolidColorBrush x:Key="ButtonPressedForegroundBrush" Color="#FF1834A1" />
+
+    <Color x:Key="ButtonNormalBorderColor">#FFCDAA52</Color>
+    <SolidColorBrush x:Key="ButtonNormalBorderBrush" Color="{StaticResource ResourceKey=ButtonNormalBorderColor}" />
+    <LinearGradientBrush x:Key="ButtonNormalBackgroundBrush" StartPoint="0 0" EndPoint="0 1">
+        <GradientStop Offset="0" Color="#FFFAF7EE" />
+        <GradientStop Offset="0.5" Color="#FFF2D99E" />
+        <GradientStop Offset="1" Color="#FFE6D19E" />
+    </LinearGradientBrush>
+    <SolidColorBrush x:Key="ButtonNormalForegroundBrush" Color="#FF413003" />
+
+    <SolidColorBrush x:Key="SeparatorBrush" Color="#FFD1D1D1" />
+    
+    <LinearGradientBrush x:Key="SplitterBrush" StartPoint="0 0" EndPoint="1 1">
+        <GradientStop Offset="0" Color="#FFAAA37F" />
+        <GradientStop Offset="1" Color="#FFEDEBDA" />
+    </LinearGradientBrush>
+
+    <SolidColorBrush x:Key="WorkspaceHeaderForegroundBrush" Color="#FFB38000" />
+    
+    <SolidColorBrush x:Key="LabelForegroundBrush" Color="#FF413003" />
+    
+    <SolidColorBrush x:Key="HyperlinkForegroundBrush" Color="#FF142573" />
+    
+    <LinearGradientBrush x:Key="SeparatorBackgroundBrush" StartPoint="0 0" EndPoint="0 1">
+        <GradientStop Offset="0" Color="#FFEEECD8" />
+        <GradientStop Offset="0.5" Color="#FFB4AD88" />
+        <GradientStop Offset="1" Color="#FFEEECD8" />
+    </LinearGradientBrush>
+
+    <SolidColorBrush x:Key="DataGridBackgroundBrush" Color="#FFF5FBF7" />
+
+    <SolidColorBrush x:Key="DataGridBorderBrush" Color="#FFD3D3D3" />
+
+    <SolidColorBrush x:Key="DataGridColumnBackgroundBrush" Color="#FFF5F3DF" />
+
+    <SolidColorBrush x:Key="DataGridColumnBorderBrush" Color="#FFBFB999" />
+
+    <SolidColorBrush x:Key="DataGridForegroundBrush" Color="#FF594304" />
+
+    <SolidColorBrush x:Key="DataGridVerticalLineBrush" Color="#FFCED5DA" />
+    <SolidColorBrush x:Key="DataGridHorizontalLineBrush" Color="#FFCBD2D6" />
+
+    <SolidColorBrush x:Key="DataGridSelectedCellBrush" Color="#FFC9E2FF" />
+    
+    <LinearGradientBrush x:Key="ComboBackgroundBrush" StartPoint="0 0" EndPoint="0 1">
+        <GradientStop Offset="0" Color="#FFF3F3F3" />
+        <GradientStop Offset="1" Color="#FFE4E1CB" />
+    </LinearGradientBrush>
+
+    <SolidColorBrush x:Key="ComboBorderBrush" Color="#FFAAA37F" /> 
+
+    <LinearGradientBrush x:Key="ComboMouseOverBackgroundBrush" StartPoint="0 0" EndPoint="0 1">
+        <GradientStop Offset="0" Color="#FFFFFFFF" />
+        <GradientStop Offset="1" Color="#FFC9E2FF" />
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="ComboPressedBackgroundBrush" StartPoint="0 0" EndPoint="0 1">
+        <GradientStop Offset="0" Color="#FFBED7FA" />
+        <GradientStop Offset="1" Color="#FF8FAFFF" />
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="CheckMouseOverBackgroundBrush" StartPoint="0 0" EndPoint="0 1">
+        <GradientStop Offset="0" Color="#FFFFFFFF" />
+        <GradientStop Offset="1" Color="#FFC9E2FF" />
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="CheckPressedBackgroundBrush" StartPoint="0 0" EndPoint="0 1">
+        <GradientStop Offset="0" Color="#FFBED7FA" />
+        <GradientStop Offset="1" Color="#FF8FAFFF" />
+    </LinearGradientBrush>
+
+    <SolidColorBrush x:Key="GlyphBrush" Color="#FF69510D" />
+
+    <LinearGradientBrush x:Key="TabBackgroundBrush" StartPoint="0 0" EndPoint="0 1">
+        <GradientStop Offset="0" Color="#FFFFFDF9" />
+        <GradientStop Offset="1" Color="Transparent" />
+    </LinearGradientBrush>
+    
+    <LinearGradientBrush x:Key="TabBorderBrush" StartPoint="0 0" EndPoint="0 1">
+        <GradientStop Offset="0" Color="#FFC1C1C1" />
+        <GradientStop Offset="1" Color="Transparent" />
+    </LinearGradientBrush>
+    
+</ResourceDictionary>

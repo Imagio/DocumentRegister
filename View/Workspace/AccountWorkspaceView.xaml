@@ -1,0 +1,50 @@
+﻿<UserControl x:Class="Docs.View.AccountWorkspaceView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:c="clr-namespace:Docs.View.Converters"
+             xmlns:ctrl="clr-namespace:Docs.View.ControlPanel">
+    
+    <UserControl.Resources>
+        <c:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+    </UserControl.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <ToolBar>
+            <ctrl:CreateNew ToolTip="Создать пользователя" />
+            <Separator />
+            <ctrl:CreateCopy ToolTip="Создать пользователя копированием текущего" />
+            <ctrl:Edit ToolTip="Редактировать пользователя" />
+            <ctrl:Delete ToolTip="Удалить пользователя" />
+            <Separator />
+            <ctrl:Find ToolTip="Найти пользователя" />
+            <Separator />
+            <ctrl:ClearFind ToolTip="Отменить поиск" />
+        </ToolBar>
+        <DataGrid Grid.Row="1" ItemsSource="{Binding Path=AccountCollection}"
+                  SelectedItem="{Binding Path=SelectedAccount}">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Header="Имя пользователя"
+                                        SortMemberPath="Name"
+                                        CanUserSort="True">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Margin="2" Source="/View;component/Images/user.png" Visibility="{Binding Path=IsActive, Converter={StaticResource ResourceKey=BoolToVisibilityConverter}}" />
+                                <Image Margin="2" Source="/View;component/Images/user_red.png" Visibility="{Binding Path=IsActive, Converter={StaticResource ResourceKey=BoolToVisibilityConverter}, ConverterParameter=1}" />
+                                <TextBlock Margin="2,0,0,0" Text="{Binding Path=UserName}" VerticalAlignment="Center" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Хэш пароля" Binding="{Binding Path=Password}" />
+                <DataGridTextColumn Header="Используется" Binding="{Binding Path=IsActive}" />
+                <DataGridTextColumn Header="Последний вход" Binding="{Binding Path=LastAccessTime}" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

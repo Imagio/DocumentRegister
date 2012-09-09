@@ -1,0 +1,27 @@
+﻿<UserControl x:Class="Docs.View.Extended.PeriodView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:lib="clr-namespace:Docs.View.Controls"
+             xmlns:c="clr-namespace:Docs.View.Converters">
+    
+    <UserControl.Resources>
+        <c:PeriodToStringConverter x:Key="PeriodToStringConverter" />
+    </UserControl.Resources>
+    
+    <HeaderedContentControl>
+        <HeaderedContentControl.Header>
+            <TextBlock Text="Период" Foreground="{StaticResource ResourceKey=LabelForegroundBrush}" />
+        </HeaderedContentControl.Header>
+        <lib:ChangedTextBox IsReadOnly="True"  
+                                    ClearCommand="{Binding Path=ClearCommand}"
+                                    ChangeCommand="{Binding Path=ChangeCommand}">
+            <lib:ChangedTextBox.Text>
+                <MultiBinding Converter="{StaticResource ResourceKey=PeriodToStringConverter}">
+                    <Binding Path="StartDate" />
+                    <Binding Path="EndDate" />
+                </MultiBinding>
+            </lib:ChangedTextBox.Text>
+        </lib:ChangedTextBox>
+    </HeaderedContentControl>
+</UserControl>

@@ -1,0 +1,90 @@
+﻿<UserControl x:Class="Docs.View.MainView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:c="clr-namespace:Docs.View.Converters" 
+             xmlns:vm="clr-namespace:Docs.ViewModel;assembly=ViewModel"
+             xmlns:v="clr-namespace:Docs.View">
+    
+    <UserControl.Resources>
+        <c:NullToVisibilityConverter x:Key="NullToVisibilityConverter" />
+    </UserControl.Resources>    
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Margin="5,5,5,0">
+            <RadioButton IsChecked="True" Command="{Binding Path=DocumentWorkspaceCommand}">
+                <StackPanel>
+                    <Image Width="48" Height="48" HorizontalAlignment="Center"
+                           Source="/View;component/Images/tab_docs.png" />
+                    <TextBlock Text="Документы" HorizontalAlignment="Center" />
+                    <TextBlock Text="и файлы" HorizontalAlignment="Center" />
+                </StackPanel>
+            </RadioButton>
+            <RadioButton Command="{Binding Path=DirectoryWorkspaceCommand}">
+                <StackPanel>
+                    <Image Width="48" Height="48" HorizontalAlignment="Center"
+                           Source="/View;component/Images/tab_directory.png" />
+                    <TextBlock Text="Нормативно-справочная" HorizontalAlignment="Center" />
+                    <TextBlock Text="информация" HorizontalAlignment="Center" />
+                </StackPanel>
+            </RadioButton>
+            <RadioButton Command="{Binding Path=AdministrationWorkspaceCommand}">
+                <StackPanel>
+                    <Image Width="48" Height="48" HorizontalAlignment="Center"
+                           Source="/View;component/Images/tab_settings.png" />
+                    <TextBlock Text="Настройка и" HorizontalAlignment="Center" />
+                    <TextBlock Text="администрирование" HorizontalAlignment="Center" />
+                </StackPanel>
+            </RadioButton>
+        </StackPanel>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Border BorderThickness="0,1,1,0" Grid.RowSpan="2" Margin="0,0,5,0"
+                    BorderBrush="{StaticResource ResourceKey=WindowBorderBrush}"
+                    CornerRadius="0,5,0,0" Padding="10,5">
+                <ContentControl Content="{Binding Path=CurrentWorkspace}">
+                    <ContentControl.Resources>
+                        <ResourceDictionary Source="DataTemplate/TabWorkspaceView.xaml" />
+                    </ContentControl.Resources>
+                </ContentControl>
+            </Border>
+            <Border Grid.Column="1" Grid.Row="1" Padding="10" Margin="0"
+                    BorderBrush="{StaticResource ResourceKey=WindowBorderBrush}"
+                    Background="{StaticResource ResourceKey=ContentBackgroundBrush}"
+                    BorderThickness="1,1,0,0" CornerRadius="5,0,0,0"
+                    Visibility="{Binding Path=CurrentWorkspace.CurrentWorkspace, Converter={StaticResource ResourceKey=NullToVisibilityConverter}}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <TextBlock FontSize="20" FontWeight="Bold" Foreground="DarkOrange" Margin="10"
+                               Text="{Binding Path=CurrentWorkspace.CurrentWorkspace.Header}"/>
+                    <ContentControl Grid.Row="1" Content="{Binding Path=CurrentWorkspace.CurrentWorkspace}">
+                        <ContentControl.Resources>
+                            <ResourceDictionary Source="DataTemplate/WorkspaceView.xaml" />
+                        </ContentControl.Resources>
+                    </ContentControl>
+                </Grid>
+            </Border>
+            <ContentControl Content="{Binding Path=CurrentWorkspace}"
+                            Grid.Column="1" Grid.Row="0">
+                <ContentControl.Resources>
+                    <ResourceDictionary Source="DataTemplate/PanelView.xaml" />
+                </ContentControl.Resources>
+            </ContentControl>
+        </Grid>
+    </Grid>
+
+</UserControl>
