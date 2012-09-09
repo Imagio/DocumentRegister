@@ -295,11 +295,13 @@ namespace Docs.Model
         /// Create a new Account object.
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="userName">Initial value of the UserName property.</param>
         /// <param name="privileges">Initial value of the Privileges property.</param>
-        public static Account CreateAccount(global::System.Int32 id, AccountPrivileges privileges)
+        public static Account CreateAccount(global::System.Int32 id, global::System.String userName, AccountPrivileges privileges)
         {
             Account account = new Account();
             account.Id = id;
+            account.UserName = userName;
             account.Privileges = StructuralObject.VerifyComplexObjectIsNotNull(privileges, "Privileges");
             return account;
         }
@@ -336,8 +338,11 @@ namespace Docs.Model
         partial void OnIdChanged();
     
         /// <summary>
-        /// No Metadata Documentation available.
+        /// 
         /// </summary>
+        /// <LongDescription>
+        /// Имя пользователя
+        /// </LongDescription>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.String UserName
@@ -355,13 +360,16 @@ namespace Docs.Model
                 OnUserNameChanged();
             }
         }
-        private global::System.String _UserName = "";
+        private global::System.String _UserName;
         partial void OnUserNameChanging(global::System.String value);
         partial void OnUserNameChanged();
     
         /// <summary>
-        /// No Metadata Documentation available.
+        /// 
         /// </summary>
+        /// <LongDescription>
+        /// Пароль
+        /// </LongDescription>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.String Password
@@ -384,8 +392,11 @@ namespace Docs.Model
         partial void OnPasswordChanged();
     
         /// <summary>
-        /// No Metadata Documentation available.
+        /// 
         /// </summary>
+        /// <LongDescription>
+        /// Используется
+        /// </LongDescription>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Boolean IsActive
@@ -408,8 +419,11 @@ namespace Docs.Model
         partial void OnIsActiveChanged();
     
         /// <summary>
-        /// No Metadata Documentation available.
+        /// 
         /// </summary>
+        /// <LongDescription>
+        /// Последний вход
+        /// </LongDescription>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.DateTime> LastAccessTime
@@ -436,8 +450,11 @@ namespace Docs.Model
         #region Complex Properties
     
         /// <summary>
-        /// No Metadata Documentation available.
+        /// 
         /// </summary>
+        /// <LongDescription>
+        /// Привилегии
+        /// </LongDescription>
         [EdmComplexPropertyAttribute()]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
         [XmlElement(IsNullable=true)]

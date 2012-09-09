@@ -13,6 +13,7 @@
         <ResourceDictionary Source="TextBox.xaml" />
         <ResourceDictionary Source="CheckBox.xaml" />
         <ResourceDictionary Source="RadioButton.xaml" />
+        <ResourceDictionary Source="TabControl.xaml" />
         <ResourceDictionary Source="HeaderedContentControl.xaml" />
     </ResourceDictionary.MergedDictionaries>
     

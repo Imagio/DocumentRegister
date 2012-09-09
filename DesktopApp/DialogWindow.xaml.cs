@@ -10,6 +10,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.ComponentModel;
 
 namespace Docs.DesktopApp
 {
@@ -25,6 +26,11 @@ namespace Docs.DesktopApp
 
         private void Button_Click_OK(object sender, RoutedEventArgs e)
         {
+            if (this.DataContext is IDataErrorInfo && (this.DataContext as IDataErrorInfo).Error != null)
+            {
+                MessageBox.Show("Данные содержат ошибки:\n" + (this.DataContext as IDataErrorInfo).Error, "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
             DialogResult = true;
         }
 

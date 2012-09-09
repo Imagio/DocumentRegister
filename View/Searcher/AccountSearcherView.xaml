@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006">
     <StackPanel Orientation="Horizontal" VerticalAlignment="Top" >
         <Label Content="Имя пользователя" />
-        <TextBox Text="{Binding Path=UserName}" Width="300"
+        <TextBox Text="{Binding Path=UserName}" Width="200"
                  VerticalAlignment="Center"/>
     </StackPanel>
 </UserControl>

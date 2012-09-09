@@ -357,12 +357,32 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="UserName" Nullable="false" DefaultValue="" />
-          <Property Type="String" Name="Password" Nullable="false" DefaultValue="" />
+          <Property Type="String" Name="UserName" Nullable="false" >
+            <Documentation>
+              <LongDescription>Имя пользователя</LongDescription>
+            </Documentation>
+          </Property>
+          <Property Type="String" Name="Password" Nullable="false" DefaultValue="" >
+            <Documentation>
+              <LongDescription>Пароль</LongDescription>
+            </Documentation>
+          </Property>
           <NavigationProperty Name="Employees" Relationship="Docs.Model.ExexcutorAccount" FromRole="Account" ToRole="Exexcutor" />
-          <Property Type="Boolean" Name="IsActive" Nullable="false" DefaultValue="False" />
-          <Property Type="DateTime" Name="LastAccessTime" />
-          <Property Name="Privileges" Type="Docs.Model.AccountPrivileges" Nullable="false" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" DefaultValue="False" >
+            <Documentation>
+              <LongDescription>Используется</LongDescription>
+            </Documentation>
+          </Property>
+          <Property Type="DateTime" Name="LastAccessTime" >
+            <Documentation>
+              <LongDescription>Последний вход</LongDescription>
+            </Documentation>
+          </Property>
+          <Property Name="Privileges" Type="Docs.Model.AccountPrivileges" Nullable="false" >
+            <Documentation>
+              <LongDescription>Привилегии</LongDescription>
+            </Documentation>
+          </Property>
         </EntityType>
         <Association Name="DocumentFile">
           <End Type="Docs.Model.Document" Role="Document" Multiplicity="0..1" />
