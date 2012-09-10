@@ -6,6 +6,7 @@
         xmlns:v="clr-namespace:Docs.View;assembly=View"
         xmlns:detail_view="clr-namespace:Docs.View.Detail;assembly=View"
         xmlns:m="clr-namespace:Docs.Model;assembly=Model"
+        xmlns:entity_viewmodel="clr-namespace:Docs.ViewModel.Entity;assembly=ViewModel"
         xmlns:extv="clr-namespace:Docs.View.Extended;assembly=View"
         xmlns:vmsearcher="clr-namespace:Docs.ViewModel.Searcher;assembly=ViewModel"
         xmlns:vsearcher="clr-namespace:Docs.View.Searcher;assembly=View"
@@ -26,7 +27,7 @@
             <vsearcher:AccountSearcherView />
         </DataTemplate>
         
-        <DataTemplate DataType="{x:Type m:Account}">
+        <DataTemplate DataType="{x:Type entity_viewmodel:AccountViewModel}">
             <detail_view:AccountView />
         </DataTemplate>
         <DataTemplate DataType="{x:Type m:Department}">

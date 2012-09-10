@@ -13,8 +13,9 @@ using System.Windows.Input;
 
 namespace Docs.ViewModel.Workspace
 {
-    public abstract class DirectoryWorkspace<E> : WorkspaceBase 
-        where E : EntityObject 
+    public abstract class DirectoryWorkspace<E,W> : WorkspaceBase 
+        where W : Entity.EntityViewModel<E>
+        where E : EntityObject
     {
         public DirectoryWorkspace(ObjectSet<E> directory, ISearcher searcher)
         {

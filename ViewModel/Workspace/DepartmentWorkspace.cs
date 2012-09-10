@@ -8,12 +8,13 @@ using System.ComponentModel;
 using System.Windows.Data;
 using Docs.ViewModel.Searcher;
 using System.Windows.Input;
+using Docs.ViewModel.Entity;
 
 namespace Docs.ViewModel.Workspace
 {
-    public class DepartmentWorkspace: DirectoryWorkspace<Department>
+    public class DepartmentWorkspace: DirectoryWorkspace<Department, DepartmentViewModel>
     {
-        public DepartmentWorkspace()
+        public DepartmentWorkspace()                                       
             : base(HandlerStore.Context.Departments, new DepartmentSearcher()) { }
 
         protected override void CopyObject(Department source, Department target)

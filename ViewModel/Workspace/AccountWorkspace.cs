@@ -11,6 +11,7 @@ using System.ComponentModel;
 using System.Windows.Data;
 using Docs.ViewModel.Searcher;
 using System.Diagnostics;
+using Docs.ViewModel.Entity;
 
 namespace Docs.ViewModel.Workspace
 {
@@ -49,7 +50,7 @@ namespace Docs.ViewModel.Workspace
                 return new RelayCommand(o =>
                 {
                     Account account = new Account();
-                    var result = HandlerStore.Main.OpenNewWindow(account.NormalTitle(), account);
+                    var result = HandlerStore.Main.OpenNewWindow(account.NormalTitle(), new AccountViewModel(account));
                     if (result)
                     {
                         account.LastAccessTime = null;
@@ -74,7 +75,7 @@ namespace Docs.ViewModel.Workspace
                     account.IsActive = SelectedAccount.IsActive;
                     account.Password = SelectedAccount.Password;
 
-                    if (HandlerStore.Main.OpenNewWindow(account.NormalTitle(), account))
+                    if (HandlerStore.Main.OpenNewWindow(account.NormalTitle(), new AccountViewModel(account)))
                     {
                         account.LastAccessTime = null;
                         var hsh = account.Return(acc => acc.Password, String.Empty).Return(pwd => PasswordHasher.Calc(pwd), String.Empty);
@@ -93,7 +94,7 @@ namespace Docs.ViewModel.Workspace
                 return new RelayCommand(o =>
                 {
                     var account = selectedAccount;
-                    if (HandlerStore.Main.OpenNewWindow(account.NormalTitle(), account))
+                    if (HandlerStore.Main.OpenNewWindow(account.NormalTitle(), new AccountViewModel(account)))
                     {
                         if (!String.IsNullOrEmpty(account.Password))
                         {

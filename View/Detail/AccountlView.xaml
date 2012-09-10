@@ -24,8 +24,8 @@
                 <Label Grid.Column="0" Grid.Row="1"
                        Content="Пароль:" />
                 <CheckBox Grid.Column="1" Grid.Row="2"
-                          Content="Используется" IsChecked="{Binding Path=IsActive}"/>
-                <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding Path=UserName, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"
+                          Content="Используется" IsChecked="{Binding Path=Model.IsActive}"/>
+                <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding Path=Model.UserName, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"
                          VerticalAlignment="Center"  />
                 <PasswordBox Grid.Column="1" Grid.Row="1" PasswordChanged="PasswordChanged"
                              VerticalAlignment="Center"/>
@@ -41,14 +41,14 @@
                         <Separator />
                         <ctrl:Delete />
                     </ToolBar>
-                    <DataGrid Grid.Row="1" ItemsSource="{Binding Path=Employees}">
+                    <DataGrid Grid.Row="1" ItemsSource="{Binding Path=Model.Employees}">
                         <DataGrid.Columns>
                             <DataGridTemplateColumn>
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <StackPanel Orientation="Horizontal">
                                             <Image Source="/View;component/Images/bullet_blue.png" />
-                                            <TextBlock Text="{Binding Path=Text}" VerticalAlignment="Center" />
+                                            <TextBlock Text="{Binding Path=Name}" VerticalAlignment="Center" />
                                         </StackPanel>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
@@ -64,7 +64,7 @@
                 <StackPanel>
                     <CheckBox Style="{StaticResource ResourceKey=OnOffCheckBoxStyle}"
                               Content="Использование полного клиента"
-                              IsChecked="{Binding Path=Privileges.CanUseFullClient}"/>
+                              IsChecked="{Binding Path=Model.Privileges.CanUseFullClient}"/>
                 </StackPanel>
             </ScrollViewer>
         </TabItem>

@@ -47,6 +47,9 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entity\AccountViewModel.cs" />
+    <Compile Include="Entity\DepartmentViewModel.cs" />
+    <Compile Include="Entity\EntityViewModel.cs" />
     <Compile Include="Helper\Titler.cs" />
     <Compile Include="Searcher\AccountSearcher.cs" />
     <Compile Include="Helper\PasswordHasher.cs" />
@@ -59,7 +62,7 @@
     <Compile Include="TabWorkspace\DocumentWorkspace.cs" />
     <Compile Include="Extended\Period.cs" />
     <Compile Include="Extended\PeriodChanger.cs" />
-    <Compile Include="HandlerStore.cs" />
+    <Compile Include="Workspace\HandlerStore.cs" />
     <Compile Include="Helper\RelayCommand.cs" />
     <Compile Include="TabWorkspace\TabWorkspaceBase.cs" />
     <Compile Include="Helper\ViewModelBase.cs" />

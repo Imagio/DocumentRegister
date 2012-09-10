@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.ComponentModel;
+using System.Reflection;
 
 namespace Docs.DesktopApp
 {
@@ -26,10 +27,20 @@ namespace Docs.DesktopApp
 
         private void Button_Click_OK(object sender, RoutedEventArgs e)
         {
-            if (this.DataContext is IDataErrorInfo && (this.DataContext as IDataErrorInfo).Error != null)
+            PropertyInfo pi = this.DataContext.GetType().GetProperty("Model");
+            if (pi != null)
             {
-                MessageBox.Show("Данные содержат ошибки:\n" + (this.DataContext as IDataErrorInfo).Error, "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
+                var model = pi.GetValue(this.DataContext, null);
+                PropertyInfo error = model.GetType().GetProperty("Error");
+                if (error != null)
+                {
+                    string errorMessage = (string)error.GetValue(model, null);
+                    if (errorMessage != null)
+                    {
+                        MessageBox.Show("Данные содержат ошибки:\n" + errorMessage, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
+                    }
+                }
             }
             DialogResult = true;
         }
