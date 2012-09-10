@@ -6,7 +6,7 @@ using Docs.Model;
 
 namespace Docs.ViewModel.Searcher
 {
-    public class AccountSearcher: ViewModelBase
+    public class AccountSearcher: ViewModelBase, ISearcher
     {
         public Predicate<object> Filter 
         {

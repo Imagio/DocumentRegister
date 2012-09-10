@@ -12,14 +12,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Docs.View
+namespace Docs.View.Detail
 {
     /// <summary>
-    /// Логика взаимодействия для DocumentPanelView.xaml
+    /// Логика взаимодействия для DepartmentDetailView.xaml
     /// </summary>
-    public partial class DocumentPanelView : UserControl
+    public partial class DepartmentView : UserControl
     {
-        public DocumentPanelView()
+        public DepartmentView()
         {
             InitializeComponent();
         }

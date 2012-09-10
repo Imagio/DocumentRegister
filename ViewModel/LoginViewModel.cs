@@ -64,6 +64,11 @@ namespace Docs.ViewModel
                                 .If(pwd => pwd == PasswordHasher.Calc(Password))
                                 .ReturnSuccess() || context.Accounts.Count() == 0)
                         {
+                            if (selectedAccount != null)
+                            {
+                                selectedAccount.LastAccessTime = context.ExecuteStoreQuery<DateTime>("SELECT NOW();", null).FirstOrDefault();
+                                context.SaveChanges();
+                            }
                             if (LoginComplete != null)
                                 LoginComplete(this, selectedAccount, context);
                         }

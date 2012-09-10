@@ -36,6 +36,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -74,9 +75,19 @@
       <DependentUpon>Print.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converters\BoolToVisibilityConverter.cs" />
+    <Compile Include="Converters\DateTimeToStringConverter.cs" />
     <Compile Include="Converters\NullToBooleanConverter.cs" />
-    <Compile Include="Detail\AccountDetailView.xaml.cs">
-      <DependentUpon>AccountDetailView.xaml</DependentUpon>
+    <Compile Include="Detail\DepartmentView.xaml.cs">
+      <DependentUpon>DepartmentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Workspace\DepartmentWorkspaceView.xaml.cs">
+      <DependentUpon>DepartmentWorkspaceView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Detail\AccountlView.xaml.cs">
+      <DependentUpon>AccountlView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TabWorkspace\DirectoryWorkspaceView.xaml.cs">
+      <DependentUpon>DirectoryWorkspaceView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Searcher\AccountSearcherView.xaml.cs">
       <DependentUpon>AccountSearcherView.xaml</DependentUpon>
@@ -93,8 +104,8 @@
     <Compile Include="Workspace\DecreeWorkspaceView.xaml.cs">
       <DependentUpon>DecreeWorkspaceView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Panel\DocumentPanelView.xaml.cs">
-      <DependentUpon>DocumentPanelView.xaml</DependentUpon>
+    <Compile Include="Panel\DocumentView.xaml.cs">
+      <DependentUpon>DocumentView.xaml</DependentUpon>
     </Compile>
     <Compile Include="TabWorkspace\DocumentWorkspaceView.xaml.cs">
       <DependentUpon>DocumentWorkspaceView.xaml</DependentUpon>
@@ -164,7 +175,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Detail\AccountDetailView.xaml">
+    <Page Include="Detail\DepartmentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Workspace\DepartmentWorkspaceView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Detail\AccountlView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TabWorkspace\DirectoryWorkspaceView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -200,7 +223,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Panel\DocumentPanelView.xaml">
+    <Page Include="Panel\DocumentView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -278,6 +301,10 @@
     <Resource Include="Images\edit.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{AB915B92-EE56-4DC6-A6D7-25909EA17B89}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ViewModel\ViewModel.csproj">
       <Project>{B1632F48-6EE2-4C97-AAB3-07EEA391C5BF}</Project>
       <Name>ViewModel</Name>

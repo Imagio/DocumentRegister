@@ -47,8 +47,11 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helper\Titler.cs" />
     <Compile Include="Searcher\AccountSearcher.cs" />
     <Compile Include="Helper\PasswordHasher.cs" />
+    <Compile Include="Searcher\DepartmentSearcher.cs" />
+    <Compile Include="Searcher\ISearcher.cs" />
     <Compile Include="Workspace\AccountWorkspace.cs" />
     <Compile Include="TabWorkspace\AdministrationWorkspace.cs" />
     <Compile Include="Workspace\DecreeWorkspace.cs" />
@@ -58,9 +61,11 @@
     <Compile Include="Extended\PeriodChanger.cs" />
     <Compile Include="HandlerStore.cs" />
     <Compile Include="Helper\RelayCommand.cs" />
-    <Compile Include="TabWorkspace\TabWorkspace.cs" />
+    <Compile Include="TabWorkspace\TabWorkspaceBase.cs" />
     <Compile Include="Helper\ViewModelBase.cs" />
-    <Compile Include="Workspace\Workspace.cs" />
+    <Compile Include="Workspace\DepartmentWorkspace.cs" />
+    <Compile Include="Workspace\DirectoryWorkspace.cs" />
+    <Compile Include="Workspace\WorkspaceBase.cs" />
     <Compile Include="LoginViewModel.cs" />
     <Compile Include="MainViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

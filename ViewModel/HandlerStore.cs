@@ -8,5 +8,6 @@ namespace Docs.ViewModel
     public static class HandlerStore
     {
         public static MainViewModel Main;
+        public static Model.DocContainer Context;
     }
 }

@@ -12,14 +12,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Docs.View
+namespace Docs.View.Detail
 {
     /// <summary>
     /// Логика взаимодействия для AccountDetailView.xaml
     /// </summary>
-    public partial class AccountDetailView : UserControl
+    public partial class AccountView : UserControl
     {
-        public AccountDetailView()
+        public AccountView()
         {
             InitializeComponent();
         }

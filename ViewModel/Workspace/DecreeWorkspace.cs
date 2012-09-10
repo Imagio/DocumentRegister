@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Collections.ObjectModel;
 
-namespace Docs.ViewModel
+namespace Docs.ViewModel.Workspace
 {
-    public class DecreeWorkspace: Workspace
+    public class DecreeWorkspace: WorkspaceBase
     {
         public DecreeWorkspace()
         {

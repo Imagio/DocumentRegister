@@ -2,13 +2,25 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Docs.ViewModel.Workspace;
+using System.Windows.Input;
 
-namespace Docs.ViewModel
+namespace Docs.ViewModel.TabWorkspace
 {
-    public class DirectoryWorkspace: TabWorkspace
+    public class DirectoryWorkspace: TabWorkspaceBase
     {
-        public DirectoryWorkspace()
+        DepartmentWorkspace departmentWorkspace;
+        public ICommand DepartmentCommand
         {
+            get
+            {
+                return new RelayCommand(o =>
+                    {
+                        if (departmentWorkspace == null)
+                            departmentWorkspace = new DepartmentWorkspace();
+                        CurrentWorkspace = departmentWorkspace;
+                    });
+            }
         }
     }
 }

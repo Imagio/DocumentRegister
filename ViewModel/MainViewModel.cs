@@ -5,6 +5,7 @@ using System.Text;
 using System.Collections.ObjectModel;
 using Docs.Model;
 using System.Windows.Input;
+using Docs.ViewModel.TabWorkspace;
 
 namespace Docs.ViewModel
 {
@@ -22,22 +23,15 @@ namespace Docs.ViewModel
         public MainViewModel(Account account, DocContainer context)
         {
             HandlerStore.Main = this;
+            HandlerStore.Context = context;
             Context = context;
             Account = account;
 
             CurrentWorkspace = documentWorkspace;
-            initWorkspaces();
         }
 
-        private void initWorkspaces()
-        {
-            directoryWorkspace = new DirectoryWorkspace();
-            documentWorkspace = new DocumentWorkspace();
-            administrationWorkspace = new AdministrationWorkspace();
-        }
-
-        private TabWorkspace currentWorkspace;
-        public TabWorkspace CurrentWorkspace
+        private TabWorkspaceBase currentWorkspace;
+        public TabWorkspaceBase CurrentWorkspace
         {
             get { return currentWorkspace; }
             set
@@ -69,9 +63,42 @@ namespace Docs.ViewModel
         private DirectoryWorkspace directoryWorkspace;
         private DocumentWorkspace documentWorkspace;
         private AdministrationWorkspace administrationWorkspace;
-        public ICommand DocumentWorkspaceCommand { get { return new RelayCommand(o => { CurrentWorkspace = documentWorkspace; }); } }
-        public ICommand DirectoryWorkspaceCommand { get { return new RelayCommand(o => { CurrentWorkspace = directoryWorkspace; }); } }
-        public ICommand AdministrationWorkspaceCommand { get { return new RelayCommand(o => { CurrentWorkspace = administrationWorkspace; }); } }
+        public ICommand DocumentWorkspaceCommand 
+        { 
+            get 
+            { 
+                return new RelayCommand(o => 
+                {
+                    if (documentWorkspace == null)
+                        documentWorkspace = new DocumentWorkspace();
+                    CurrentWorkspace = documentWorkspace; 
+                }); 
+            } 
+        }
+        public ICommand DirectoryWorkspaceCommand 
+        { 
+            get
+            { 
+                return new RelayCommand(o => 
+                {
+                    if (directoryWorkspace == null)
+                        directoryWorkspace = new DirectoryWorkspace();
+                    CurrentWorkspace = directoryWorkspace; 
+                }); 
+            } 
+        }
+        public ICommand AdministrationWorkspaceCommand 
+        { 
+            get 
+            { 
+                return new RelayCommand(o => 
+                {
+                    if (administrationWorkspace == null)
+                        administrationWorkspace = new AdministrationWorkspace();
+                    CurrentWorkspace = administrationWorkspace; 
+                }); 
+            } 
+        }
 
         #endregion
     }

@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Docs.ViewModel
+namespace Docs.ViewModel.TabWorkspace
 {
-    public abstract class TabWorkspace:  ViewModelBase
+    public abstract class TabWorkspaceBase:  ViewModelBase
     {
-        private Workspace currentWorkspace;
-        public Workspace CurrentWorkspace
+        private Workspace.WorkspaceBase currentWorkspace;
+        public Workspace.WorkspaceBase CurrentWorkspace
         {
             get { return currentWorkspace; }
             set

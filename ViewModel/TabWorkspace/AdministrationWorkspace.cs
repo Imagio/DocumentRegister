@@ -3,13 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Input;
+using Docs.ViewModel.Workspace;
 
-namespace Docs.ViewModel
+namespace Docs.ViewModel.TabWorkspace
 {
-    public class AdministrationWorkspace: TabWorkspace
+    public class AdministrationWorkspace: TabWorkspaceBase
     {
-        private AccountWorkspace acountWorksapce = new AccountWorkspace();
+        private AccountWorkspace accountWorksapce;
 
-        public ICommand AccountCommand { get { return new RelayCommand(o => { CurrentWorkspace = acountWorksapce; }); } }
+        public ICommand AccountCommand 
+        { 
+            get 
+            { 
+                return new RelayCommand(o =>
+                {
+                    if (accountWorksapce == null)
+                        accountWorksapce = new AccountWorkspace();
+                    CurrentWorkspace = accountWorksapce; 
+                }); 
+            } 
+        }
     }
 }

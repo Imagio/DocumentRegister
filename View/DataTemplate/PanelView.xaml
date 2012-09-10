@@ -1,11 +1,12 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:v="clr-namespace:Docs.View"
-                    xmlns:vm="clr-namespace:Docs.ViewModel;assembly=ViewModel">
+                    xmlns:panel_view="clr-namespace:Docs.View.Panel"
+                    xmlns:vm="clr-namespace:Docs.ViewModel.TabWorkspace;assembly=ViewModel">
 
     <DataTemplate DataType="{x:Type vm:DocumentWorkspace}">
-        <v:DocumentPanelView />
+        <panel_view:DocumentView />
     </DataTemplate>
     <DataTemplate DataType="{x:Type vm:AdministrationWorkspace}" />
+    <DataTemplate DataType="{x:Type vm:DirectoryWorkspace}" />
 
 </ResourceDictionary>

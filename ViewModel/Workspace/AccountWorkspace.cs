@@ -12,19 +12,19 @@ using System.Windows.Data;
 using Docs.ViewModel.Searcher;
 using System.Diagnostics;
 
-namespace Docs.ViewModel
+namespace Docs.ViewModel.Workspace
 {
-    public class AccountWorkspace: Workspace
+    public class AccountWorkspace: WorkspaceBase
     {
         public AccountWorkspace()
         {
-            Header = "Учетные записи пользователей";
+            Header = selectedAccount.ListTitle();
             AccountCollection = new ObservableCollection<Account>(HandlerStore.Main.Context.Accounts.ToList());
             accountCollectionView = (ICollectionView)CollectionViewSource.GetDefaultView(AccountCollection);
         }
 
         ICollectionView accountCollectionView;
-        private AccountSearcher accountSearcher = new AccountSearcher();
+        private ISearcher accountSearcher = new AccountSearcher();
 
         public ObservableCollection<Account> AccountCollection { get; private set; }
 
@@ -49,7 +49,7 @@ namespace Docs.ViewModel
                 return new RelayCommand(o =>
                 {
                     Account account = new Account();
-                    var result = HandlerStore.Main.OpenNewWindow("Учетная запись", account);
+                    var result = HandlerStore.Main.OpenNewWindow(account.NormalTitle(), account);
                     if (result)
                     {
                         account.LastAccessTime = null;
@@ -74,7 +74,7 @@ namespace Docs.ViewModel
                     account.IsActive = SelectedAccount.IsActive;
                     account.Password = SelectedAccount.Password;
 
-                    if (HandlerStore.Main.OpenNewWindow("Учетная запись пользователя", account))
+                    if (HandlerStore.Main.OpenNewWindow(account.NormalTitle(), account))
                     {
                         account.LastAccessTime = null;
                         var hsh = account.Return(acc => acc.Password, String.Empty).Return(pwd => PasswordHasher.Calc(pwd), String.Empty);
@@ -93,7 +93,7 @@ namespace Docs.ViewModel
                 return new RelayCommand(o =>
                 {
                     var account = selectedAccount;
-                    if (HandlerStore.Main.OpenNewWindow("Учетная запись", account))
+                    if (HandlerStore.Main.OpenNewWindow(account.NormalTitle(), account))
                     {
                         if (!String.IsNullOrEmpty(account.Password))
                         {
@@ -115,7 +115,7 @@ namespace Docs.ViewModel
             {
                 return new RelayCommand(o =>
                     {
-                        if (!HandlerStore.Main.AskQuestion("Удаление учетной записи", "Вы действительно хотите удалить учетную запись?"))
+                        if (!HandlerStore.Main.AskQuestion(selectedAccount.DeleteTitle(), "Вы действительно хотите удалить элемент?"))
                             return;
                         var account = SelectedAccount;
                         HandlerStore.Main.Context.Accounts.DeleteObject(account);
@@ -130,7 +130,7 @@ namespace Docs.ViewModel
             {
                 return new RelayCommand(o =>
                     {
-                        if (HandlerStore.Main.OpenNewWindow("Поиск учетных записей", accountSearcher))
+                        if (HandlerStore.Main.OpenNewWindow(selectedAccount.SearchTitle(), accountSearcher))
                         {
                             accountCollectionView.Filter = accountSearcher.Filter;
                         }
