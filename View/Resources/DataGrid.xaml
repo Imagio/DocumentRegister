@@ -46,8 +46,8 @@
                             <ContentPresenter Grid.Column="0" Margin="{TemplateBinding Padding}" Content="{TemplateBinding Content}"/>
                             
                             <Grid Grid.Column="1">
-                                <Image x:Name="SortArrow" Visibility="Collapsed" Source="/View;component/Images/sort.png" />
-                                <Image x:Name="SortArrow_" Visibility="Collapsed" Source="/View;component/Images/sort_.png" />
+                                <Image Opacity="0" x:Name="SortArrow" Visibility="Collapsed" Source="/View;component/Images/sort.png" />
+                                <Image Opacity="0" x:Name="SortArrow_" Visibility="Collapsed" Source="/View;component/Images/sort_.png" />
                             </Grid>
                             
                             <Thumb x:Name="PART_LeftHeaderGripper" HorizontalAlignment="Left" Style="{StaticResource ResourceKey=DGThumb1}"/>

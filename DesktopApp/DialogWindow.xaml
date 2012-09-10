@@ -10,7 +10,7 @@
         xmlns:vsearcher="clr-namespace:Docs.View.Searcher;assembly=View"
         xmlns:c="clr-namespace:Docs.View.Converters;assembly=View"
         SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen"
-        Width="480" Height="320"
+        Width="480" Height="320" Loaded="Window_Loaded"
         Background="{StaticResource ResourceKey=ContentBackgroundBrush}">
     
     <Window.Resources>

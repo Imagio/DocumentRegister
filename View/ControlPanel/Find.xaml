@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" >
     <Button Command="{Binding Path=FindCommand}">
         <StackPanel Orientation="Horizontal">
-            <Image Source="/View;component/Images/find.png" />
+            <Image Style="{StaticResource ToolImage}" Source="/View;component/Images/find.png" />
             <TextBlock Margin="2,0,0,0" Text="Найти..." />
         </StackPanel>
     </Button>

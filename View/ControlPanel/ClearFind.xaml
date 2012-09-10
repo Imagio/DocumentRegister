@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" >
     
     <Button Command="{Binding Path=ClearFindCommand}">
-        <Image Source="/View;component/Images/find_.png" />
+        <Image Style="{StaticResource ToolImage}" Source="/View;component/Images/find_.png" />
     </Button>
     
 </UserControl>

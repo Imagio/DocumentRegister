@@ -3,6 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006">
     <Button Command="{Binding Path=PrintCommand}">
-        <Image Source="/View;component/Images/print.png" />
+        <Image Style="{StaticResource ToolImage}" Source="/View;component/Images/print.png" />
     </Button>
 </UserControl>

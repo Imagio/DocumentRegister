@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" >
     
     <Button Command="{Binding Path=CreateCopyCommand}">
-        <Image Source="/View;component/Images/create_copy.png" />
+        <Image Style="{StaticResource ToolImage}" Source="/View;component/Images/create_copy.png" />
     </Button>
     
 </UserControl>

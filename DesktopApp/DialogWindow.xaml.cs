@@ -38,5 +38,10 @@ namespace Docs.DesktopApp
         {
             DialogResult = false;
         }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            SizeToContent = System.Windows.SizeToContent.Manual;
+        }
     }
 }

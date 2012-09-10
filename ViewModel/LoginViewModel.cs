@@ -59,6 +59,7 @@ namespace Docs.ViewModel
                     {
                         if (SelectedAccount
                                 .If(account => account.IsActive)
+                                .If(account => account.Privileges.CanUseFullClient)
                                 .With(account => account.Password)
                                 .If(pwd => pwd == PasswordHasher.Calc(Password))
                                 .ReturnSuccess() || context.Accounts.Count() == 0)

@@ -20,17 +20,17 @@
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <Label Grid.Column="0" Grid.Row="0"
-               Content="Имя пользователя:" />
+                       Content="Имя пользователя:" />
                 <Label Grid.Column="0" Grid.Row="1"
-               Content="Пароль:" />
+                       Content="Пароль:" />
                 <CheckBox Grid.Column="1" Grid.Row="2"
-                  Content="Используется" IsChecked="{Binding Path=IsActive}"/>
+                          Content="Используется" IsChecked="{Binding Path=IsActive}"/>
                 <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding Path=UserName, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"
-                 VerticalAlignment="Center"  />
+                         VerticalAlignment="Center"  />
                 <PasswordBox Grid.Column="1" Grid.Row="1" PasswordChanged="PasswordChanged"
-                     VerticalAlignment="Center"/>
+                             VerticalAlignment="Center"/>
                 <Label Grid.Column="0" Grid.Row="3"
-               Content="Ответственные:" />
+                       Content="Ответственные:" />
                 <Grid Grid.ColumnSpan="3" Grid.Row="4">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
@@ -59,7 +59,14 @@
             </Grid>
         </TabItem>
         <TabItem Header="Привилегии">
-            
+            <ScrollViewer VerticalScrollBarVisibility="Auto"
+                          HorizontalScrollBarVisibility="Disabled">
+                <StackPanel>
+                    <CheckBox Style="{StaticResource ResourceKey=OnOffCheckBoxStyle}"
+                              Content="Использование полного клиента"
+                              IsChecked="{Binding Path=Privileges.CanUseFullClient}"/>
+                </StackPanel>
+            </ScrollViewer>
         </TabItem>
     </TabControl>
 </UserControl>

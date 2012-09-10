@@ -10,6 +10,7 @@ using ImagioMonads;
 using System.ComponentModel;
 using System.Windows.Data;
 using Docs.ViewModel.Searcher;
+using System.Diagnostics;
 
 namespace Docs.ViewModel
 {
@@ -39,9 +40,7 @@ namespace Docs.ViewModel
                     OnPropertyChanged("SelectedAccount");
                 }
             }
-        }
-
-      
+        }     
 
         public ICommand CreateNewCommand
         {

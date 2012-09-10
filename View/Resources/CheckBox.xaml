@@ -67,5 +67,64 @@
             </Setter.Value>
         </Setter>
     </Style>
+    
+    <Style x:Key="OnOffCheckBoxStyle" TargetType="{x:Type CheckBox}">
+        <Setter Property="SnapsToDevicePixels" Value="true"/>
+        <Setter Property="OverridesDefaultStyle" Value="true"/>
+        <Setter Property="Foreground" Value="{StaticResource ResourceKey=LabelForegroundBrush}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="CheckBox">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Border Width="40" Height="20" VerticalAlignment="Center"
+                            CornerRadius="2" BorderThickness="1"
+                            BorderBrush="{StaticResource ResourceKey=WindowBorderBrush}"
+                            Background="{StaticResource ResourceKey=ContentBackgroundBrush}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Line x:Name="ON" X1="0" Y1="0" X2="0" Y2="12" StrokeThickness="2"
+                                  VerticalAlignment="Center" HorizontalAlignment="Center"
+                                  Stroke="{StaticResource ResourceKey=WindowBorderBrush}"/>
+                            <Ellipse x:Name="OFF" Grid.Column="1" Visibility="Hidden"
+                                     Stroke="{StaticResource ResourceKey=WindowBorderBrush}"
+                                     StrokeThickness="2" Width="12" Height="12" VerticalAlignment="Center"
+                                     HorizontalAlignment="Center"/>
+                            <Border x:Name="bd" Grid.Column="1" CornerRadius="2" BorderThickness="1" 
+                                    Margin="-1"
+                                    BorderBrush="{StaticResource ResourceKey=WindowBorderBrush}"
+                                    Background="{StaticResource ResourceKey=WindowBackgroundBrush}"/>
+                        </Grid>
+                    </Border>
+                        <ContentPresenter Grid.Column="1" Margin="4,0,0,0" VerticalAlignment="Center" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="ON" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="OFF" Property="Visibility" Value="Hidden" />
+                            <Setter TargetName="bd" Property="Grid.Column" Value="1" />
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="False">
+                            <Setter TargetName="ON" Property="Visibility" Value="Hidden" />
+                            <Setter TargetName="OFF" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="bd" Property="Grid.Column" Value="0" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter TargetName="bd" Property="Background" Value="{StaticResource ResourceKey=CheckMouseOverBackgroundBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter TargetName="bd" Property="Background" Value="{StaticResource ResourceKey=CheckPressedBackgroundBrush}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 
 </ResourceDictionary>

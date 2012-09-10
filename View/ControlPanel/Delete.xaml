@@ -3,6 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" >
     <Button Command="{Binding Path=DeleteCommand}">
-        <Image Source="/View;component/Images/delete.png" />
+        <Image Style="{StaticResource ResourceKey=ToolImage}" Source="/View;component/Images/delete.png" />
     </Button>
 </UserControl>

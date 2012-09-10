@@ -413,7 +413,7 @@
           <End Type="Docs.Model.Account" Role="Account" Multiplicity="0..1" />
         </Association>
         <ComplexType Name="AccountPrivileges" >
-          <Property Type="Boolean" Name="CanUseFullClient" Nullable="false" />
+          <Property Type="Boolean" Name="CanUseFullClient" Nullable="false" DefaultValue="False" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
