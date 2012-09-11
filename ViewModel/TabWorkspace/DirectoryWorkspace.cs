@@ -50,5 +50,19 @@ namespace Docs.ViewModel.TabWorkspace
                 });
             }
         }
+
+        MonitoringWorkspace monitoringWorkspace;
+        public ICommand MonitoringCommand
+        {
+            get
+            {
+                return new RelayCommand(o =>
+                    {
+                        if (monitoringWorkspace == null)
+                            monitoringWorkspace = new MonitoringWorkspace();
+                        CurrentWorkspace = monitoringWorkspace;
+                    });
+            }
+        }
     }
 }

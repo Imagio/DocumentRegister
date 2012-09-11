@@ -27,7 +27,7 @@ namespace Docs.ViewModel
             Context = context;
             Account = account;
 
-            CurrentWorkspace = documentWorkspace;
+            DocumentWorkspaceCommand.Execute(null);
         }
 
         private TabWorkspaceBase currentWorkspace;

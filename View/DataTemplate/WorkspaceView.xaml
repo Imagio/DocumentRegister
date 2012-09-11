@@ -17,9 +17,9 @@
     <DataTemplate DataType="{x:Type vm:EmployeeWorkspace}">
         <workspace_view:EmployeeWorkspaceView />
     </DataTemplate>
-    <DataTemplate DataType="{x:Type vm:SendingGroupWorkspace}">
+    <DataTemplate DataType="{x:Type vm:WorkspaceBase}">
         <workspace_view:DirectoryWorkspaceView />
-    </DataTemplate>        
+    </DataTemplate>
     
 
 </ResourceDictionary>

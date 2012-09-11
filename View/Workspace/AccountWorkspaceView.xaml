@@ -31,7 +31,8 @@
             <DataGrid.Columns>
                 <DataGridTemplateColumn Header="Имя пользователя"
                                         SortMemberPath="Name"
-                                        CanUserSort="True">
+                                        CanUserSort="True"
+                                        Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">

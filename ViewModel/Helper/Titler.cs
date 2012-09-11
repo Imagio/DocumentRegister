@@ -16,6 +16,10 @@ namespace Docs.ViewModel
                 return "Подразделение";
             if (e is SendingGroup)
                 return "Группа рассылки";
+            if (e is Employee)
+                return "Сотрудник";
+            if (e is Monitoring)
+                return "Контроль";
             return "Элемент";
         }
         public static string DeleteTitle<E>(this E e)
@@ -34,6 +38,10 @@ namespace Docs.ViewModel
                 return "Подразделения";
             if (e is SendingGroup)
                 return "Группы рассылки";
+            if (e is Employee)
+                return "Сотрудники";
+            if (e is Monitoring)
+                return "Виды контроля";
             return "Список элементов";
         }
     }

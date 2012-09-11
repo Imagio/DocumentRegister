@@ -10,5 +10,7 @@ namespace Docs.ViewModel.Entity
     {
         public DepartmentViewModel (Department department)
             : base(department) { }
+
+        
     }
 }

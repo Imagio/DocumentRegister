@@ -23,7 +23,8 @@
         <DataGrid Grid.Row="1" ItemsSource="{Binding Path=ItemCollection}"
                   SelectedItem="{Binding Path=SelectedItem}">
             <DataGrid.Columns>
-                <DataGridTemplateColumn Header="ФИО" CanUserSort="True" SortMemberPath="Name">
+                <DataGridTemplateColumn Header="ФИО" CanUserSort="True" SortMemberPath="Name"
+                                        Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">

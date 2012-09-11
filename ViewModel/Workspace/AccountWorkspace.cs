@@ -98,8 +98,8 @@ namespace Docs.ViewModel.Workspace
                     {
                         if (!String.IsNullOrEmpty(account.Password))
                         {
-                            var hsh = account.Return(acc => acc.Password, String.Empty).Return(pwd => PasswordHasher.Calc(pwd), String.Empty);
-                            account.Password = hsh;
+                            //var hsh = account.Return(acc => acc.Password, String.Empty).Return(pwd => PasswordHasher.Calc(pwd), String.Empty);
+                            //account.Password = hsh;
                             HandlerStore.Main.Context.SaveChanges();
                         }
                     }

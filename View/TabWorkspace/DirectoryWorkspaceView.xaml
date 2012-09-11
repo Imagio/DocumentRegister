@@ -7,5 +7,6 @@
         <TextBlock Margin="0,5"><Hyperlink Command="{Binding Path=DepartmentCommand}">Подразделения</Hyperlink></TextBlock>
         <TextBlock Margin="0,5"><Hyperlink Command="{Binding Path=EmployeeCommand}">Сотрудники</Hyperlink></TextBlock>
         <TextBlock Margin="0,5"><Hyperlink Command="{Binding Path=SendingGroupCommand}">Группы рассылки</Hyperlink></TextBlock>
+        <TextBlock Margin="0,5"><Hyperlink Command="{Binding Path=MonitoringCommand}">Виды контроля</Hyperlink></TextBlock>
     </StackPanel>
 </UserControl>

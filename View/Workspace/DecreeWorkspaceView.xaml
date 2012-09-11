@@ -46,7 +46,7 @@
                         <Image Source="/View;component/Images/tick.png" />
                     </DataGridTemplateColumn.Header>
                 </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="Наименование">
+                <DataGridTemplateColumn Header="Наименование" Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">

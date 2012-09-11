@@ -80,11 +80,17 @@
     <Compile Include="Detail\DepartmentView.xaml.cs">
       <DependentUpon>DepartmentView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Detail\DirectoryView.xaml.cs">
+      <DependentUpon>DirectoryView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Detail\EmployeeView.xaml.cs">
       <DependentUpon>EmployeeView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Detail\SendingGroupView.xaml.cs">
       <DependentUpon>SendingGroupView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Selector\DirectorySelectorView.xaml.cs">
+      <DependentUpon>DirectorySelectorView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Workspace\DepartmentWorkspaceView.xaml.cs">
       <DependentUpon>DepartmentWorkspaceView.xaml</DependentUpon>
@@ -191,11 +197,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Detail\DirectoryView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Detail\EmployeeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Detail\SendingGroupView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Selector\DirectorySelectorView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -26,10 +26,10 @@ namespace Docs.Model
         {
             get 
             {
+                errorList.Remove(columnName);
                 if (columnName == "UserName")
                 {
-                    errorList.Remove(columnName);
-                    if (this.With(w => w.UserName).If(w => w.Length <= 4).ReturnSuccess())
+                    if (this.UserName == null || this.With(w => w.UserName).If(w => w.Length <= 4).ReturnSuccess())
                         errorList.Add(columnName, "Имя пользователя должно превышать 4 символа");
                 }
                 OnPropertyChanged("Error");

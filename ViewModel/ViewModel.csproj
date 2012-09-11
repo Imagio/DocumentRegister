@@ -51,12 +51,15 @@
     <Compile Include="Entity\DepartmentViewModel.cs" />
     <Compile Include="Entity\EmployeeViewModel.cs" />
     <Compile Include="Entity\EntityViewModel.cs" />
+    <Compile Include="Entity\MonitoringViewModel.cs" />
     <Compile Include="Entity\SendingGroupViewModel.cs" />
     <Compile Include="Helper\Titler.cs" />
     <Compile Include="Searcher\AccountSearcher.cs" />
     <Compile Include="Helper\PasswordHasher.cs" />
     <Compile Include="Searcher\DepartmentSearcher.cs" />
     <Compile Include="Searcher\ISearcher.cs" />
+    <Compile Include="Selector\EmployeeSelector.cs" />
+    <Compile Include="Selector\Selector.cs" />
     <Compile Include="Workspace\AccountWorkspace.cs" />
     <Compile Include="TabWorkspace\AdministrationWorkspace.cs" />
     <Compile Include="Workspace\DecreeWorkspace.cs" />
@@ -71,6 +74,7 @@
     <Compile Include="Workspace\DepartmentWorkspace.cs" />
     <Compile Include="Workspace\DirectoryWorkspace.cs" />
     <Compile Include="Workspace\EmployeeWorkspace.cs" />
+    <Compile Include="Workspace\MonitoringWorkspace.cs" />
     <Compile Include="Workspace\SendingGroupWorkspace.cs" />
     <Compile Include="Workspace\WorkspaceBase.cs" />
     <Compile Include="LoginViewModel.cs" />

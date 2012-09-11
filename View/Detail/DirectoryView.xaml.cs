@@ -15,19 +15,13 @@ using System.Windows.Shapes;
 namespace Docs.View.Detail
 {
     /// <summary>
-    /// Логика взаимодействия для AccountDetailView.xaml
+    /// Логика взаимодействия для DirectoryView.xaml
     /// </summary>
-    public partial class AccountView : UserControl
+    public partial class DirectoryView : UserControl
     {
-        public AccountView()
+        public DirectoryView()
         {
             InitializeComponent();
-        }
-
-        private void PasswordChanged(object sender, RoutedEventArgs e)
-        {
-            var model = this.DataContext.GetType().GetProperty("Model").GetValue(this.DataContext, null);
-            model.GetType().GetProperty("Password").SetValue(model, (sender as PasswordBox).Password, null);
         }
     }
 }

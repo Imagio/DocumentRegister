@@ -6,7 +6,9 @@ using System.Data.Objects.DataClasses;
 
 namespace Docs.ViewModel.Entity
 {
-    public abstract class EntityViewModel<E>: ViewModelBase
+    public abstract class EntityViewModelBase : ViewModelBase { }
+
+    public abstract class EntityViewModel<E>: EntityViewModelBase
         where E : EntityObject 
     {
         public EntityViewModel(E entity)
