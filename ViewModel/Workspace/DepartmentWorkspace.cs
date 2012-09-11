@@ -28,5 +28,10 @@ namespace Docs.ViewModel.Workspace
             e.Name = "new";
             e.Code = "01";
         }
+
+        public override DepartmentViewModel CreateInstance(Department e)
+        {
+            return new DepartmentViewModel(e);
+        }
     }
 }

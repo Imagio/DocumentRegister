@@ -30,7 +30,7 @@
         <DataTemplate DataType="{x:Type entity_viewmodel:AccountViewModel}">
             <detail_view:AccountView />
         </DataTemplate>
-        <DataTemplate DataType="{x:Type m:Department}">
+        <DataTemplate DataType="{x:Type entity_viewmodel:DepartmentViewModel}">
             <detail_view:DepartmentView />
         </DataTemplate>        
     </Window.Resources>

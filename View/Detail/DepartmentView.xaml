@@ -21,13 +21,13 @@
         <Label Grid.Column="0" Grid.Row="2"
                Content="Контингент:" />
         <TextBox Grid.Column="1" Grid.Row="0"
-                 Text="{Binding Path=Code, 
+                 Text="{Binding Path=Model.Code, 
             ValidatesOnExceptions=True, 
             NotifyOnValidationError=True, 
             ValidatesOnDataErrors=True}"
                  VerticalAlignment="Center"/>
         <TextBox Grid.Column="1" Grid.Row="1"
-                 Text="{Binding Path=Name, 
+                 Text="{Binding Path=Model.Name, 
             ValidatesOnExceptions=True, 
             NotifyOnValidationError=True, 
             ValidatesOnDataErrors=True}"
@@ -43,10 +43,19 @@
                 <ctrl:Delete />
             </ToolBar>
             <DataGrid Grid.Row="1" 
-                      ItemsSource="{Binding Path=Employees}"
+                      ItemsSource="{Binding Path=Model.Employees}"
                       SelectedItem="{Binding Path=SelectedEmployee}">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding Path=Name}" />
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="/View;component/Images/bullet_blue.png" Margin="0,0,2,0" />
+                                    <TextBlock VerticalAlignment="Center" Text="{Binding Path=Name}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>

@@ -19,7 +19,7 @@ namespace Docs.ViewModel.Workspace
     {
         public DirectoryWorkspace(ObjectSet<E> directory, ISearcher searcher)
         {
-            Header = selectedItem.ListTitle();
+            Header = directory.CreateObject().ListTitle();
             ItemCollection = new ObservableCollection<E>(directory.ToList());
             itemCollectionView = (ICollectionView)CollectionViewSource.GetDefaultView(ItemCollection);
             itemSearcher = searcher;
@@ -34,6 +34,8 @@ namespace Docs.ViewModel.Workspace
         }
 
         private ObjectSet<E> objectSet;
+
+        public abstract W CreateInstance(E e);
 
         private E selectedItem;
         public E SelectedItem
@@ -67,7 +69,7 @@ namespace Docs.ViewModel.Workspace
         {
             E e = objectSet.CreateObject();
             InitStartValue(e);
-            if (HandlerStore.Main.OpenNewWindow(e.NormalTitle(), e))
+            if (HandlerStore.Main.OpenNewWindow(e.NormalTitle(), CreateInstance(e)))
             {
                 objectSet.AddObject(e);
                 ItemCollection.Add(e);
@@ -93,7 +95,7 @@ namespace Docs.ViewModel.Workspace
             E item = objectSet.CreateObject();
             CopyObject(selectedItem, item);
 
-            if (HandlerStore.Main.OpenNewWindow(item.NormalTitle(), item))
+            if (HandlerStore.Main.OpenNewWindow(item.NormalTitle(), CreateInstance(item)))
             {
                 objectSet.AddObject(item);
                 HandlerStore.Main.Context.SaveChanges();
@@ -111,7 +113,7 @@ namespace Docs.ViewModel.Workspace
         private void edit()
         {
             var e = selectedItem;
-            if (HandlerStore.Main.OpenNewWindow(e.NormalTitle(), e))
+            if (HandlerStore.Main.OpenNewWindow(e.NormalTitle(), CreateInstance(e)))
                 HandlerStore.Context.SaveChanges();
             else
                 HandlerStore.Context.Refresh(RefreshMode.StoreWins, e);

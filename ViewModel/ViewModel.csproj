@@ -62,7 +62,7 @@
     <Compile Include="TabWorkspace\DocumentWorkspace.cs" />
     <Compile Include="Extended\Period.cs" />
     <Compile Include="Extended\PeriodChanger.cs" />
-    <Compile Include="Workspace\HandlerStore.cs" />
+    <Compile Include="HandlerStore.cs" />
     <Compile Include="Helper\RelayCommand.cs" />
     <Compile Include="TabWorkspace\TabWorkspaceBase.cs" />
     <Compile Include="Helper\ViewModelBase.cs" />

@@ -19,8 +19,8 @@
             <Separator />
             <ctrl:ClearFind />
         </ToolBar>
-        <DataGrid Grid.Row="1" ItemsSource="{Binding Path=DeparmentCollection}"
-                  SelectedItem="{Binding Path=SelectedDepartment}">
+        <DataGrid Grid.Row="1" ItemsSource="{Binding Path=ItemCollection}"
+                  SelectedItem="{Binding Path=SelectedItem}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Код подразделения" Binding="{Binding Path=Code}" />
                 <DataGridTemplateColumn Header="Наименование" CanUserSort="True" SortMemberPath="Name">
