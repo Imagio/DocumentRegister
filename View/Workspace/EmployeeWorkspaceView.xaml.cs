@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace Docs.View.Workspace
 {
     /// <summary>
-    /// Логика взаимодействия для DepartmentWorkspaceView.xaml
+    /// Логика взаимодействия для EmployeeWorkspaceView.xaml
     /// </summary>
-    public partial class DepartmentWorkspaceView : UserControl
+    public partial class EmployeeWorkspaceView : UserControl
     {
-        public DepartmentWorkspaceView()
+        public EmployeeWorkspaceView()
         {
             InitializeComponent();
         }

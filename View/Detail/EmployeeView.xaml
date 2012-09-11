@@ -1,0 +1,16 @@
+﻿<UserControl x:Class="Docs.View.Detail.EmployeeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" >
+        
+    <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+        <Label Content="ФИО:" />    
+        <TextBox Text="{Binding Path=Model.Name, 
+            NotifyOnValidationError=True,
+            ValidatesOnDataErrors=True,
+            ValidatesOnExceptions=True}"
+                 VerticalAlignment="Center"
+                 Width="300"/>
+    </StackPanel>
+    
+</UserControl>

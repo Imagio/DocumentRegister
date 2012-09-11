@@ -33,6 +33,12 @@
         <DataTemplate DataType="{x:Type entity_viewmodel:DepartmentViewModel}">
             <detail_view:DepartmentView />
         </DataTemplate>        
+        <DataTemplate DataType="{x:Type entity_viewmodel:EmployeeViewModel}">
+            <detail_view:EmployeeView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type entity_viewmodel:SendingGroupViewModel}">
+            <detail_view:SendingGroupView />
+        </DataTemplate>
     </Window.Resources>
     
     <Grid>

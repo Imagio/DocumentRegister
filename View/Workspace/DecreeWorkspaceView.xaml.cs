@@ -12,7 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Docs.View
+namespace Docs.View.Workspace
 {
     /// <summary>
     /// Логика взаимодействия для DecreeWorkspaceView.xaml

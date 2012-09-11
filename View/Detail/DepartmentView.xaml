@@ -19,7 +19,7 @@
         <Label Grid.Column="0" Grid.Row="1"
                Content="Наименование:" />
         <Label Grid.Column="0" Grid.Row="2"
-               Content="Контингент:" />
+               Content="Сотрудники:" />
         <TextBox Grid.Column="1" Grid.Row="0"
                  Text="{Binding Path=Model.Code, 
             ValidatesOnExceptions=True, 

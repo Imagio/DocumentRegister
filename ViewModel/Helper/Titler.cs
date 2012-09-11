@@ -14,6 +14,8 @@ namespace Docs.ViewModel
                 return "Учетная запись пользователя";
             if (e is Department)
                 return "Подразделение";
+            if (e is SendingGroup)
+                return "Группа рассылки";
             return "Элемент";
         }
         public static string DeleteTitle<E>(this E e)
@@ -30,6 +32,8 @@ namespace Docs.ViewModel
                 return "Учетные записи пользователей";
             if (e is Department)
                 return "Подразделения";
+            if (e is SendingGroup)
+                return "Группы рассылки";
             return "Список элементов";
         }
     }

@@ -12,14 +12,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Docs.View.Workspace
+namespace Docs.View.Detail
 {
     /// <summary>
-    /// Логика взаимодействия для DepartmentWorkspaceView.xaml
+    /// Логика взаимодействия для EmployeeView.xaml
     /// </summary>
-    public partial class DepartmentWorkspaceView : UserControl
+    public partial class EmployeeView : UserControl
     {
-        public DepartmentWorkspaceView()
+        public EmployeeView()
         {
             InitializeComponent();
         }

@@ -11,7 +11,7 @@
     <EntitySet Name="Monitorings" EntityType="Docs.Model.Store.Monitorings" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="MonitoringInfoes" EntityType="Docs.Model.Store.MonitoringInfoes" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Departments" EntityType="Docs.Model.Store.Departments" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="DepartmentGroups" EntityType="Docs.Model.Store.DepartmentGroups" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SendingGroups" EntityType="Docs.Model.Store.SendingGroups" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Employees" EntityType="Docs.Model.Store.Employees" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Accounts" EntityType="Docs.Model.Store.Accounts" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="DepartmentDepartmentGroup" EntityType="Docs.Model.Store.DepartmentDepartmentGroup" store:Type="Tables" Schema="dbo" />
@@ -33,7 +33,7 @@
       <End Role="DepartmentDepartmentGroup" EntitySet="DepartmentDepartmentGroup" />
     </AssociationSet>
     <AssociationSet Name="FK_DepartmentDepartmentGroup_DepartmentGroup" Association="Docs.Model.Store.FK_DepartmentDepartmentGroup_DepartmentGroup">
-      <End Role="DepartmentGroup" EntitySet="DepartmentGroups" />
+      <End Role="DepartmentGroup" EntitySet="SendingGroups" />
       <End Role="DepartmentDepartmentGroup" EntitySet="DepartmentDepartmentGroup" />
     </AssociationSet>
     <AssociationSet Name="FK_DocumentDepartment_Document" Association="Docs.Model.Store.FK_DocumentDepartment_Document">
@@ -96,7 +96,7 @@
     <Property Name="Code" Type="longtext" Nullable="false" />
     <Property Name="Name" Type="longtext" Nullable="false" />
   </EntityType>
-  <EntityType Name="DepartmentGroups">
+  <EntityType Name="SendingGroups">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
@@ -109,7 +109,7 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="longtext" Nullable="false" />
-    <Property Name="Department_Id" Type="int" Nullable="false" />
+    <Property Name="Department_Id" Type="int" Nullable="true" />
     <Property Name="Account_Id" Type="int" Nullable="true" />
   </EntityType>
   <EntityType Name="Accounts">
@@ -117,11 +117,11 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="UserName" Type="longtext" Nullable="false" DefaultValue="" />
+    <Property Name="UserName" Type="longtext" Nullable="false" />
     <Property Name="Password" Type="longtext" Nullable="false" DefaultValue="" />
     <Property Name="IsActive" Type="bool" Nullable="false" DefaultValue="false" />
     <Property Name="LastAccessTime" Type="datetime" Nullable="true" />
-    <Property Name="Privileges_CanUseFullClient" Type="bool" Nullable="false" />
+    <Property Name="Privileges_CanUseFullClient" Type="bool" Nullable="false" DefaultValue="false" />
   </EntityType>
   <EntityType Name="DepartmentDepartmentGroup">
     <Key>
@@ -176,7 +176,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="DepartmentExexcutor">
-    <End Role="Department" Type="Docs.Model.Store.Departments" Multiplicity="1" />
+    <End Role="Department" Type="Docs.Model.Store.Departments" Multiplicity="0..1" />
     <End Role="Exexcutor" Type="Docs.Model.Store.Employees" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Department">
@@ -213,7 +213,7 @@
   </Association>
   <Association Name="FK_DepartmentDepartmentGroup_DepartmentGroup">
     <End Role="DepartmentDepartmentGroup" Type="Docs.Model.Store.DepartmentDepartmentGroup" Multiplicity="*" />
-    <End Role="DepartmentGroup" Type="Docs.Model.Store.DepartmentGroups" Multiplicity="1" />
+    <End Role="DepartmentGroup" Type="Docs.Model.Store.SendingGroups" Multiplicity="1" />
     <ReferentialConstraint>
       <Principal Role="DepartmentGroup">
         <PropertyRef Name="Id" />
@@ -257,7 +257,7 @@
           <EntitySet Name="Monitorings" EntityType="Docs.Model.Monitoring" />
           <EntitySet Name="MonitoringInfoes" EntityType="Docs.Model.MonitoringInfo" />
           <EntitySet Name="Departments" EntityType="Docs.Model.Department" />
-          <EntitySet Name="DepartmentGroups" EntityType="Docs.Model.DepartmentGroup" />
+          <EntitySet Name="SendingGroups" EntityType="Docs.Model.SendingGroup" />
           <EntitySet Name="Employees" EntityType="Docs.Model.Employee" />
           <EntitySet Name="Accounts" EntityType="Docs.Model.Account" />
           <AssociationSet Name="DocumentFile" Association="Docs.Model.DocumentFile">
@@ -274,7 +274,7 @@
           </AssociationSet>
           <AssociationSet Name="DepartmentDepartmentGroup" Association="Docs.Model.DepartmentDepartmentGroup">
             <End Role="Department" EntitySet="Departments" />
-            <End Role="DepartmentGroup" EntitySet="DepartmentGroups" />
+            <End Role="DepartmentGroup" EntitySet="SendingGroups" />
           </AssociationSet>
           <AssociationSet Name="DocumentDepartment" Association="Docs.Model.DocumentDepartment">
             <End Role="Document" EntitySet="Documents" />
@@ -332,10 +332,10 @@
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="Code" Nullable="false" />
-          <Property Type="String" Name="Name" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" Unicode="true" />
           <NavigationProperty Name="Employees" Relationship="Docs.Model.DepartmentExexcutor" FromRole="Department" ToRole="Exexcutor" />
         </EntityType>
-        <EntityType Name="DepartmentGroup">
+        <EntityType Name="SendingGroup">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -398,14 +398,14 @@
         </Association>
         <Association Name="DepartmentDepartmentGroup">
           <End Type="Docs.Model.Department" Role="Department" Multiplicity="*" />
-          <End Type="Docs.Model.DepartmentGroup" Role="DepartmentGroup" Multiplicity="*" />
+          <End Type="Docs.Model.SendingGroup" Role="DepartmentGroup" Multiplicity="*" />
         </Association>
         <Association Name="DocumentDepartment">
           <End Type="Docs.Model.Document" Role="Document" Multiplicity="*" />
           <End Type="Docs.Model.Department" Role="Department" Multiplicity="*" />
         </Association>
         <Association Name="DepartmentExexcutor">
-          <End Type="Docs.Model.Department" Role="Department" Multiplicity="1" />
+          <End Type="Docs.Model.Department" Role="Department" Multiplicity="0..1" />
           <End Type="Docs.Model.Employee" Role="Exexcutor" Multiplicity="*" />
         </Association>
         <Association Name="ExexcutorAccount">
@@ -466,9 +466,9 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="DepartmentGroups">
-      <EntityTypeMapping TypeName="IsTypeOf(Docs.Model.DepartmentGroup)">
-        <MappingFragment StoreEntitySet="DepartmentGroups">
+    <EntitySetMapping Name="SendingGroups">
+      <EntityTypeMapping TypeName="IsTypeOf(Docs.Model.SendingGroup)">
+        <MappingFragment StoreEntitySet="SendingGroups">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
         </MappingFragment>
@@ -544,6 +544,7 @@
       <EndProperty Name="Exexcutor">
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
+      <Condition ColumnName="Department_Id" IsNull="false" />
     </AssociationSetMapping>
     <AssociationSetMapping Name="ExexcutorAccount" TypeName="Docs.Model.ExexcutorAccount" StoreEntitySet="Employees">
       <EndProperty Name="Account">
@@ -578,10 +579,10 @@
         <EntityTypeShape EntityType="Docs.Model.File" Width="1.5" PointX="0.5" PointY="0.5" Height="0.4" IsExpanded="false" />
         <EntityTypeShape EntityType="Docs.Model.Monitoring" Width="1.5" PointX="0.5" PointY="1" Height="0.4" IsExpanded="false" />
         <EntityTypeShape EntityType="Docs.Model.MonitoringInfo" Width="1.5" PointX="2.5" PointY="1" Height="0.4" IsExpanded="false" />
-        <EntityTypeShape EntityType="Docs.Model.Department" Width="1.5" PointX="0.5" PointY="2.375" Height="0.4" IsExpanded="false" />
-        <EntityTypeShape EntityType="Docs.Model.DepartmentGroup" Width="1.5" PointX="0.5" PointY="1.5" Height="0.4" IsExpanded="false" />
-        <EntityTypeShape EntityType="Docs.Model.Employee" Width="1.5" PointX="0.5" PointY="3.25" Height="0.4" IsExpanded="false" />
-        <EntityTypeShape EntityType="Docs.Model.Account" Width="1.5" PointX="2.625" PointY="3.25" Height="2.3648893229166665" IsExpanded="true" />
+        <EntityTypeShape EntityType="Docs.Model.Department" Width="1.5" PointX="2.5" PointY="1.5" Height="0.4" IsExpanded="false" />
+        <EntityTypeShape EntityType="Docs.Model.SendingGroup" Width="1.5" PointX="0.5" PointY="1.5" Height="0.4" IsExpanded="false" />
+        <EntityTypeShape EntityType="Docs.Model.Employee" Width="1.5" PointX="0.5" PointY="2" Height="0.4" IsExpanded="false" />
+        <EntityTypeShape EntityType="Docs.Model.Account" Width="1.5" PointX="2.5" PointY="2" Height="0.4" IsExpanded="false" />
         <AssociationConnector Association="Docs.Model.DocumentFile">
           <ConnectorPoint PointX="4.5" PointY="0.7" />
           <ConnectorPoint PointX="2" PointY="0.7" />
@@ -595,20 +596,20 @@
           <ConnectorPoint PointX="4" PointY="1.2000000000000002" />
         </AssociationConnector>
         <AssociationConnector Association="Docs.Model.DepartmentDepartmentGroup">
-          <ConnectorPoint PointX="1.25" PointY="2.375" />
-          <ConnectorPoint PointX="1.25" PointY="1.9" />
+          <ConnectorPoint PointX="2.5" PointY="1.7" />
+          <ConnectorPoint PointX="2" PointY="1.7" />
         </AssociationConnector>
         <AssociationConnector Association="Docs.Model.DocumentDepartment">
-          <ConnectorPoint PointX="4.5" PointY="2.575" />
-          <ConnectorPoint PointX="2" PointY="2.575" />
+          <ConnectorPoint PointX="4.5" PointY="1.7" />
+          <ConnectorPoint PointX="4" PointY="1.7" />
         </AssociationConnector>
         <AssociationConnector Association="Docs.Model.DepartmentExexcutor">
-          <ConnectorPoint PointX="1.25" PointY="2.775" />
-          <ConnectorPoint PointX="1.25" PointY="3.25" />
+          <ConnectorPoint PointX="2.4999999999999996" PointY="1.9" />
+          <ConnectorPoint PointX="1.9999999999999998" PointY="2" />
         </AssociationConnector>
         <AssociationConnector Association="Docs.Model.ExexcutorAccount">
-          <ConnectorPoint PointX="2" PointY="3.45" />
-          <ConnectorPoint PointX="2.625" PointY="3.45" />
+          <ConnectorPoint PointX="2" PointY="2.231252500000001" />
+          <ConnectorPoint PointX="2.5" PointY="2.231252500000001" />
         </AssociationConnector>
       </Diagram>
     </edmx:Diagrams>

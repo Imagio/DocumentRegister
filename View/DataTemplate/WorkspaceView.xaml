@@ -1,18 +1,25 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:v="clr-namespace:Docs.View"
+                    xmlns:workspace_view="clr-namespace:Docs.View.Workspace"
                     xmlns:vm="clr-namespace:Docs.ViewModel.Workspace;assembly=ViewModel">
                     
     
     <DataTemplate DataType="{x:Type vm:DecreeWorkspace}">
-        <v:DecreeWorkspaceView />
+        <workspace_view:DecreeWorkspaceView />
     </DataTemplate>
     <DataTemplate DataType="{x:Type vm:AccountWorkspace}">
-        <v:AccountWorkspaceView />
+        <workspace_view:AccountWorkspaceView />
     </DataTemplate>
     
     <DataTemplate DataType="{x:Type vm:DepartmentWorkspace}">
-        <v:DepartmentWorkspaceView />
+        <workspace_view:DepartmentWorkspaceView />
     </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:EmployeeWorkspace}">
+        <workspace_view:EmployeeWorkspaceView />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:SendingGroupWorkspace}">
+        <workspace_view:DirectoryWorkspaceView />
+    </DataTemplate>        
+    
 
 </ResourceDictionary>

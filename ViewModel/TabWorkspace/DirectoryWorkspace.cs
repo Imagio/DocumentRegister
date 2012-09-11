@@ -22,5 +22,33 @@ namespace Docs.ViewModel.TabWorkspace
                     });
             }
         }
+
+        EmployeeWorkspace employeeWorkspace;
+        public ICommand EmployeeCommand
+        {
+            get
+            {
+                return new RelayCommand(o =>
+                    {
+                        if (employeeWorkspace == null)
+                            employeeWorkspace = new EmployeeWorkspace();
+                        CurrentWorkspace = employeeWorkspace;
+                    });
+            }
+        }
+
+        SendingGroupWorkspace sendingGroupWorkspace;
+        public ICommand SendingGroupCommand
+        {
+            get 
+            {
+                return new RelayCommand(o =>
+                {
+                    if (sendingGroupWorkspace == null)
+                        sendingGroupWorkspace = new SendingGroupWorkspace();
+                    CurrentWorkspace = sendingGroupWorkspace;
+                });
+            }
+        }
     }
 }

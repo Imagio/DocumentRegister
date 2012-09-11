@@ -5,11 +5,14 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 09/09/2012 12:52:49
--- Generated from EDMX file: F:\Source\DocumentRegister\Model\DocModel.edmx
+-- Date Created: 09/11/2012 12:36:10
+-- Generated from EDMX file: D:\imagio-sources\DocumentRegister\Model\DocModel.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
 
+DROP DATABASE IF EXISTS `docs`;
+CREATE DATABASE `docs` CHAR set=utf8;
+USE `docs`;
 
 -- --------------------------------------------------
 -- Dropping existing FOREIGN KEY constraints
@@ -89,9 +92,9 @@ CREATE TABLE `Departments` (
     `Name` longtext  NOT NULL
 );
 
--- Creating table 'DepartmentGroups'
+-- Creating table 'SendingGroups'
 
-CREATE TABLE `DepartmentGroups` (
+CREATE TABLE `SendingGroups` (
     `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
     `Name` longtext  NOT NULL
 );
@@ -101,7 +104,7 @@ CREATE TABLE `DepartmentGroups` (
 CREATE TABLE `Employees` (
     `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
     `Name` longtext  NOT NULL,
-    `Department_Id` int  NOT NULL,
+    `Department_Id` int  NULL,
     `Account_Id` int  NULL
 );
 
@@ -213,7 +216,7 @@ ADD CONSTRAINT `FK_DepartmentDepartmentGroup_Department`
 ALTER TABLE `DepartmentDepartmentGroup`
 ADD CONSTRAINT `FK_DepartmentDepartmentGroup_DepartmentGroup`
     FOREIGN KEY (`DepartmentDepartmentGroup_Department_Id`)
-    REFERENCES `DepartmentGroups`
+    REFERENCES `SendingGroups`
         (`Id`)
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 

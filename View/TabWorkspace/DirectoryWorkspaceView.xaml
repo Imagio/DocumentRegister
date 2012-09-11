@@ -1,9 +1,11 @@
-﻿<UserControl x:Class="Docs.View.DirectoryWorkspaceView"
+﻿<UserControl x:Class="Docs.View.TabWorkspace.DirectoryWorkspaceView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" >
 
     <StackPanel TextBlock.FontWeight="Bold">
         <TextBlock Margin="0,5"><Hyperlink Command="{Binding Path=DepartmentCommand}">Подразделения</Hyperlink></TextBlock>
+        <TextBlock Margin="0,5"><Hyperlink Command="{Binding Path=EmployeeCommand}">Сотрудники</Hyperlink></TextBlock>
+        <TextBlock Margin="0,5"><Hyperlink Command="{Binding Path=SendingGroupCommand}">Группы рассылки</Hyperlink></TextBlock>
     </StackPanel>
 </UserControl>

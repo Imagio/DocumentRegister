@@ -15,18 +15,13 @@ namespace Docs.ViewModel.Workspace
     public class DepartmentWorkspace: DirectoryWorkspace<Department, DepartmentViewModel>
     {
         public DepartmentWorkspace()                                       
-            : base(HandlerStore.Context.Departments, new DepartmentSearcher()) { }
+            : base(HandlerStore.Context.Departments, new DepartmentSearcher(), w => w.Code) { }
 
         protected override void CopyObject(Department source, Department target)
         {
             base.CopyObject(source, target);
-        }
-
-        protected override void InitStartValue(Department e)
-        {
-            base.InitStartValue(e);
-            e.Name = "new";
-            e.Code = "01";
+            target.Code = source.Code;
+            target.Name = source.Name;
         }
 
         public override DepartmentViewModel CreateInstance(Department e)

@@ -17,10 +17,10 @@ namespace Docs.ViewModel.Workspace
         where W : Entity.EntityViewModel<E>
         where E : EntityObject
     {
-        public DirectoryWorkspace(ObjectSet<E> directory, ISearcher searcher)
+        public DirectoryWorkspace(ObjectSet<E> directory, ISearcher searcher, Func<E, object> order)
         {
             Header = directory.CreateObject().ListTitle();
-            ItemCollection = new ObservableCollection<E>(directory.ToList());
+            ItemCollection = new ObservableCollection<E>(directory.OrderBy(order).ToList());
             itemCollectionView = (ICollectionView)CollectionViewSource.GetDefaultView(ItemCollection);
             itemSearcher = searcher;
             objectSet = directory;
@@ -84,11 +84,6 @@ namespace Docs.ViewModel.Workspace
 
         protected virtual void CopyObject(E source, E target)
         {
-            foreach (var prop in typeof(E).GetProperties())
-            {
-                if (prop.GetType().IsValueType)
-                    prop.SetValue(target, prop.GetValue(source, null), null);
-            }
         }
         private void createCopy()
         {
@@ -154,7 +149,7 @@ namespace Docs.ViewModel.Workspace
         protected virtual bool CanFind() { return true; }
         private bool canFind()
         {
-            return CanFind();
+            return CanFind() && itemSearcher != null;
         }
 
         private void clearFind()
