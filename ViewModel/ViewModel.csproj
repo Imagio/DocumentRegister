@@ -47,6 +47,8 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DocumentEntity\Document.cs" />
+    <Compile Include="DocumentEntity\FilesViewModel.cs" />
     <Compile Include="Entity\AccountViewModel.cs" />
     <Compile Include="Entity\DepartmentViewModel.cs" />
     <Compile Include="Entity\EmployeeViewModel.cs" />

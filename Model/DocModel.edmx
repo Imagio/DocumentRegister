@@ -575,7 +575,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram Name="DocModel" >
-        <EntityTypeShape EntityType="Docs.Model.Document" Width="1.5" PointX="4.5" PointY="0.5" Height="2.3648893229166661" />
+        <EntityTypeShape EntityType="Docs.Model.Document" Width="1.5" PointX="4.5" PointY="0.5" Height="2.5571907552083331" />
         <EntityTypeShape EntityType="Docs.Model.File" Width="1.5" PointX="0.5" PointY="0.5" Height="0.4" IsExpanded="false" />
         <EntityTypeShape EntityType="Docs.Model.Monitoring" Width="1.5" PointX="0.5" PointY="1" Height="0.4" IsExpanded="false" />
         <EntityTypeShape EntityType="Docs.Model.MonitoringInfo" Width="1.5" PointX="2.5" PointY="1" Height="0.4" IsExpanded="false" />
@@ -592,20 +592,20 @@
           <ConnectorPoint PointX="2.5" PointY="1.2" />
         </AssociationConnector>
         <AssociationConnector Association="Docs.Model.DocumentMonitoringInfo">
-          <ConnectorPoint PointX="4.5" PointY="1.2000000000000002" />
-          <ConnectorPoint PointX="4" PointY="1.2000000000000002" />
+          <ConnectorPoint PointX="4.5" PointY="1.2" />
+          <ConnectorPoint PointX="4" PointY="1.2" />
         </AssociationConnector>
         <AssociationConnector Association="Docs.Model.DepartmentDepartmentGroup">
-          <ConnectorPoint PointX="2.5" PointY="1.7000000000000002" />
-          <ConnectorPoint PointX="2" PointY="1.7000000000000002" />
+          <ConnectorPoint PointX="2.5" PointY="1.7" />
+          <ConnectorPoint PointX="2" PointY="1.7" />
         </AssociationConnector>
         <AssociationConnector Association="Docs.Model.DocumentDepartment">
           <ConnectorPoint PointX="4.5" PointY="1.7" />
           <ConnectorPoint PointX="4" PointY="1.7" />
         </AssociationConnector>
         <AssociationConnector Association="Docs.Model.DepartmentExexcutor">
-          <ConnectorPoint PointX="2.5" PointY="1.9000000000000004" />
-          <ConnectorPoint PointX="2" PointY="2" />
+          <ConnectorPoint PointX="2.4999999999999996" PointY="1.9" />
+          <ConnectorPoint PointX="1.9999999999999998" PointY="2" />
         </AssociationConnector>
         <AssociationConnector Association="Docs.Model.ExexcutorAccount">
           <ConnectorPoint PointX="2" PointY="2.231252500000001" />

@@ -41,7 +41,8 @@
                         <Separator />
                         <ctrl:Delete />
                     </ToolBar>
-                    <DataGrid Grid.Row="1" ItemsSource="{Binding Path=Model.Employees}">
+                    <DataGrid Grid.Row="1" ItemsSource="{Binding Path=Model.Employees}"
+                              SelectedItem="{Binding Path=SelectedEmployee}">
                         <DataGrid.Columns>
                             <DataGridTemplateColumn>
                                 <DataGridTemplateColumn.CellTemplate>

@@ -89,6 +89,9 @@
     <Compile Include="Detail\SendingGroupView.xaml.cs">
       <DependentUpon>SendingGroupView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DocumentEntity\FilesView.xaml.cs">
+      <DependentUpon>FilesView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Selector\DirectorySelectorView.xaml.cs">
       <DependentUpon>DirectorySelectorView.xaml</DependentUpon>
     </Compile>
@@ -206,6 +209,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Detail\SendingGroupView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DocumentEntity\FilesView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -402,6 +409,7 @@
   <ItemGroup>
     <Resource Include="Images\user_red.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
